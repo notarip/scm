@@ -8,5 +8,6 @@ class AtributoTipo {
 
 
     static constraints = {
+    	unidadesMedida nullable:true
     }
 }

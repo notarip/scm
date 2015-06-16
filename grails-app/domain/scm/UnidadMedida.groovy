@@ -8,5 +8,6 @@ class UnidadMedida {
 	UnidadMedidaCategoria categoria
 
     static constraints = {
-    }
+	 descripcion nullable:true    
+	}
 }

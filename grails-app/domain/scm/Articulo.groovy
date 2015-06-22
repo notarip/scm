@@ -21,6 +21,15 @@ class Articulo {
         return LazyList.decorate(piezas,FactoryUtils.instantiateFactory(Pieza.class))
     }
 
+    def borrarPieza(def idPieza){
+
+		if (idPieza){
+    		Pieza pieza = Pieza.get(idPieza);
+    		this.removeFromPiezas(pieza);
+    	}
+
+    }
+
     @Override
     public String toString(){
 

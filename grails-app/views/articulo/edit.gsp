@@ -30,6 +30,7 @@
                 <g:hiddenField name="version" value="${articulo?.version}" />
                 <fieldset class="form">
                     <!-- f:all bean="articulo"/ -->
+                    <g:hiddenField type="text" name="id" value="${articulo?.id}"/>
                     Nombre<g:field type="text" name="nombre" value="${articulo?.nombre}"/>
                     Descripción<g:field type="text" name="descripcion" value="${articulo?.descripcion}"/>
                     <!-- f:all bean="articulo"/ -->

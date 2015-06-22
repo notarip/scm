@@ -7,19 +7,25 @@ import groovy.transform.ToString
 
 @ToString(includeNames=true)
 class ArticuloCmd {
-   String nombre
-   String descripcion
-   List<PiezaCmd> piezas
+    Integer id
+    String nombre
+    String descripcion
+    List<PiezaCmd> piezas
 }
 
 @ToString(includeNames=true)
 class PiezaCmd {
+   Integer id
    Integer idArticulo
    Integer cantidad
+   boolean _deleted
+
 }
 
 @Transactional(readOnly = true)
 class ArticuloController {
+
+    ArticuloService articuloService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -72,7 +78,10 @@ class ArticuloController {
     }
 
     @Transactional
-    def update(Articulo articulo) {
+    def update(ArticuloCmd articuloCmd) {
+
+        def articulo = Articulo.get(articuloCmd.id)
+
         if (articulo == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -85,13 +94,7 @@ class ArticuloController {
             return
         }
 
-       def _toBeDeleted = articulo.piezas.findAll {it._deleted}
-
-        if (_toBeDeleted) {
-
-            articulo.piezas.removeAll(_toBeDeleted)
-
-        }
+        articuloService.actualizarPiezas(articulo, articuloCmd)
 
         articulo.save flush:true
 

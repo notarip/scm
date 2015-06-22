@@ -5,7 +5,6 @@ class Pieza {
 	Articulo articuloPadre;
 	Articulo articulo;
 	Integer cantidad;
-
 	boolean _deleted;
 
 	static transients = [ '_deleted' ]
@@ -19,7 +18,7 @@ class Pieza {
 
     Pieza(def piezaCmd){
 
-    	Articulo articulo = Articulo.get(piezaCmd.idArticulo);
+        Articulo articulo = Articulo.get(piezaCmd.idArticulo);
 
     	this.articulo = articulo;
     	this.cantidad = piezaCmd.cantidad;

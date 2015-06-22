@@ -32,5 +32,6 @@
 # "temporary" build files
 /target
 
-/*.class
-/*.bin
+*.class
+*.bin
+.gradle/

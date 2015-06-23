@@ -20,7 +20,7 @@ class ProyectoFabricacionSpec extends Specification {
     //Functional Test
     def "el jefe de suministros crea un nuevo proyecto de fabricacion"(){
 
-    	given: "el articulo que se va a fabricar existe y tiene cargadas todas sus etapas de fabricación 
+    	given: "el producto que se va a fabricar existe y tiene cargadas todas sus etapas de fabricación 
     			y hay disponibilidad de todos los artículos necesarios"
 
     	when: "El jefe de suministros crea un nuevo proyecto de fabricación, especificando el artículo y la cantidad"

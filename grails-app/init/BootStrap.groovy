@@ -7,10 +7,10 @@ class BootStrap {
 
     	println "******************* PROCESO DE HIDRATACION ****************************"
 
-		println "Cargando Articulos..."
+		println "Cargando Productos..."
 
-		new Articulo(nombre:"Boton N5",descripcion:"Boton de chomba N5",).save()
-		new Articulo(nombre:"Chomba",descripcion:"Chomba Roja",).save()
+		new Producto(nombre:"Boton N5",descripcion:"Boton de chomba N5",).save()
+		new Producto(nombre:"Chomba",descripcion:"Chomba Roja",).save()
 
 
 

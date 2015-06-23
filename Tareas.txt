@@ -1,0 +1,33 @@
+Tareas
+
+- scm -> mrp (planificacion de los requerimientos de material)
+
+@Look & Feel
+- Seguir con el agregado del select de los productos
+- Agregar favicon
+- Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
+
+
+@Comportamiento
+
+
+- Agregar niveles a los productos (final - 0, semi elaborado - 1, materia prima - 2)
+- Agregar las estapas de fabricacion de cada producto
+- Ademas tiene que haber una relacion entre las etapas de fabricacion y las materiales de cada producto
+- Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
+
+
+-------
+Entidades:
+
+*Producto: Producto final o elemento utilizado para la confección del mismo. 
+
+*Etapa de Fabricación: Cada una de las etapas de fabricación, por ejemplo: “Corte de puños”, “Costura de puños”, “Pegado de botones”. La confección de cada artículo esta relacionado con varias o ninguna etapa de el fabricación.
+
+*Pedido de Cotización: Es el paso previo a la orden de fabricación, el taller especifica los costos y el tiempo de confección.
+
+*Orden de Fabricación: Es una orden especifica para un taller de fabricación, ejemplo: “Costura de dos mil puños de camisas – C1010”. Incluye los articulos va a recibir para la fabricación y los que debe entregar, los costos de la confección y la fecha de entrega.
+
+*Proyecto de Fabricación: Es un proyecto que incluye una o mas ordenes de fabricación, por ejemplo: “Mil camisas – C1010”. Incluye las fechas de entrega de los artículos con el detalle de las fechas y costos de cada etapa de fabricación.
+
+*Pedido de Artículos: Es un pedido al almacén de los artículos necesarios para un proyecto en el caso en que no estén disponibles.

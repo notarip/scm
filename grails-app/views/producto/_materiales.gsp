@@ -1,18 +1,34 @@
 <script type="text/javascript">
 
     var childCount = ${producto?.materiales.size()} + 0;
+    var productos = "";
+
+    $.ajax({
+        url:"/producto/ajaxGetProductos",
+        async:false
+    }).done(function(result) {
+        $.each(result, function() {
+            productos += "<option value='"+ this.id + "'>" + this.nombre + "</option>\n";
+        });
+        
+    }).fail(function(result) {
+        alert( "error" );
+    }).always(function(result) {
+        //alert( "complete" );
+    });
+
 
     function addChild() {
 
         var htmlId = "material" + childCount;
-        var deleteIcon = "${resource(dir:'assets/images/skin', file:'database_delete.png')}";
+        //var deleteIcon = "${resource(dir:'images/skin', file:'database_delete.png')}";
         var templateHtml = "<div id='" + htmlId + "' name='" + htmlId + "'>\n";
         templateHtml += "<select id='materiales[" + childCount + "].idProducto' name='materiales[" + childCount + "].idProducto'>\n";
-        templateHtml += "<option value='1'>uno</option>\n";
-        templateHtml += "<option value='2'>dos</option>\n";
+        templateHtml += productos
         templateHtml += "</select>\n";
         templateHtml += "<input type='number' id='materiales[" + childCount + "].cantidad' name='materiales[" + childCount + "].cantidad' />\n";
-        templateHtml += "<span onClick='$(\"#" + htmlId + "\").remove();'><img src='" + deleteIcon + "' /></span>\n";
+        templateHtml += "<span onClick='$(\"#" + htmlId + "\").remove();'><img class='delete'/></span>\n";
+        //templateHtml += "<span class='delete' onClick='$(\"#" + htmlId + "\").remove();'></span>\n";
         templateHtml += "</div>\n";
         $("#childList").append(templateHtml);
         childCount++;

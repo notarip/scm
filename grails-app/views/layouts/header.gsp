@@ -8,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
 
 
     <link href="${resource(dir: 'stylesheet', file: 'bootstrap-select.css')}" rel="stylesheet">
     <link href="${resource(dir: 'stylesheet', file: 'bootstrap.css')}" rel="stylesheet">
     <link href="${resource(dir: 'stylesheet', file: 'bootstrap-theme.css')}" rel="stylesheet">
     <link href="${resource(dir: 'stylesheet', file: 'style.css')}" rel="stylesheet">
+    <link href="${resource(dir: 'stylesheet', file: 'main.css')}" rel="stylesheet">
     <link href="${resource(dir: 'stylesheet', file: 'theme.css')}" rel="stylesheet">
     <link href="${resource(dir: 'javascripts', file: 'jquery-ui.min.css')}" rel="stylesheet">
 

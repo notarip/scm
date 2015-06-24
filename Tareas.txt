@@ -3,8 +3,10 @@ Tareas
 - scm -> mrp (planificacion de los requerimientos de material)
 
 @Look & Feel
-- Seguir con el agregado del select de los productos
+
+- En _materiales.gsp tener en cuenta el caso en que no se puedan recuperar los productos
 - Agregar favicon
+- Solucionar lo de la imagen de borrado en la base para los materiales
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
 
 
@@ -12,7 +14,7 @@ Tareas
 
 
 - Agregar niveles a los productos (final - 0, semi elaborado - 1, materia prima - 2)
-- Agregar las estapas de fabricacion de cada producto
+- Agregar las etapas de fabricacion de cada producto
 - Ademas tiene que haber una relacion entre las etapas de fabricacion y las materiales de cada producto
 - Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
 

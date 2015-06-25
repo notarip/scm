@@ -555,12 +555,14 @@ th:hover, tr:hover {
     background-image: url(../images/skin/database_delete.png);
 }
 
-
+a.delete {
+    background-image:url(../images/skin/database_delete.png);
+}
 
 img.delete {
     content:url(../images/skin/database_delete.png);
-    width: auto; /*or your image's width*/
-height: auto; /*or your image's height*/
+    width: 16px; /*or your image's width*/
+    height: 16px; /*or your image's height*/
 }
 
 .buttons .edit {

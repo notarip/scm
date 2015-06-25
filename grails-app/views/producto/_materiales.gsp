@@ -21,13 +21,14 @@
     function addChild() {
 
         var htmlId = "material" + childCount;
+
         //var deleteIcon = "${resource(dir:'images/skin', file:'database_delete.png')}";
         var templateHtml = "<div id='" + htmlId + "' name='" + htmlId + "'>\n";
         templateHtml += "<select id='materiales[" + childCount + "].idProducto' name='materiales[" + childCount + "].idProducto'>\n";
         templateHtml += productos
         templateHtml += "</select>\n";
         templateHtml += "<input type='number' id='materiales[" + childCount + "].cantidad' name='materiales[" + childCount + "].cantidad' />\n";
-        templateHtml += "<span onClick='$(\"#" + htmlId + "\").remove();'><img class='delete'/></span>\n";
+        templateHtml += "<span onClick='$(\"#" + htmlId + "\").remove();'><img src='http://localhost:8080/assets/skin/database_delete.png'/></span>\n";
         //templateHtml += "<span class='delete' onClick='$(\"#" + htmlId + "\").remove();'></span>\n";
         templateHtml += "</div>\n";
         $("#childList").append(templateHtml);

@@ -9,24 +9,72 @@
             <div class="panel-heading">
                  <h1 class="panel-title">Dashboard</h1>
             </div>
-            <div class="row-fluid show-grid">
-                <div class="span4">
-                    <h4 >Productos</h4>
-                    <li style="list-style-type: none;"><a class="productos-icon" href="producto">Ver Productos</a> </li>
+            <div class="row-fluid show-grid ">
+                <div class="span4 col-sm-4">
+                    <div class="dashboard panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Productos</h4>
+                        </div>                            
+                        <br/>
+                        <ul>
+                            <li>Elaborados: 15</li>
+                            <li>Semi Elaborados: 30</li>
+                            <li>Materia Prima: 67</li>
+                        </ul>
+                    </div>
+                    <br/>
+                    <div class="dashboard panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Productos Fila 2</h4>
+                        </div>                            
+                        <br/>
+                        <ul>
+                            <li>Elaborados: 15</li>
+                            <li>Semi Elaborados: 30</li>
+                            <li>Materia Prima: 67</li>
+                        </ul>
+                    </div>
+                    <br/>                    
+                </div>
+                <div class="span4 dashboard-divider col-sm-4">
+                    <div class="dashboard panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Productos</h4>
+                        </div>                            
+                        <br/>
+                        <ul>
+                            <li>Elaborados: 15</li>
+                            <li>Semi Elaborados: 30</li>
+                            <li>Materia Prima: 67</li>
+                        </ul>
+                    </div>
+                    <br/>
+                    <div class="dashboard panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Productos</h4>
+                        </div>                            
+                        <br/>
+                        <ul>
+                            <li>Elaborados: 15</li>
+                            <li>Semi Elaborados: 30</li>
+                            <li>Materia Prima: 67</li>
+                        </ul>
+                    </div>
+                    <br/>                    
                 </div>
                 <div class="span4 dashboard-divider">
-                    <h4>Categories</h4>
-                        <i class="icon-list"></i> View Categories
+                    <div class="dashboard panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Productos</h4>
+                        </div>                            
+                        <br/>
+                        <ul>
+                            <li>Elaborados: 15</li>
+                            <li>Semi Elaborados: 30</li>
+                            <li>Materia Prima: 67</li>
+                        </ul>
+                    </div>
                     <br/>
-                    <br/>
-                        <i class="icon-star icon-white"></i> Add New Category
-                </div>
-                <div class="span3 dashboard-divider">
-                    <h4>Countries</h4>        
-                        <i class="icon-list"></i> View Countriess
-                    <br/>
-                    <br/>
-                        <i class="icon-star icon-white"></i> Add New Country
                 </div>
             </div>
         </div>      

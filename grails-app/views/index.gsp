@@ -11,11 +11,8 @@
             </div>
             <div class="row-fluid show-grid">
                 <div class="span4">
-                    <h4>Customers</h4>
-                    <i class="icon-list"></i> View Customers
-                   <br/>
-                    <br/>
-                        <i class="icon-star icon-white"></i> Add New Customer
+                    <h4 >Productos</h4>
+                    <li style="list-style-type: none;"><a class="productos-icon" href="producto">Ver Productos</a> </li>
                 </div>
                 <div class="span4 dashboard-divider">
                     <h4>Categories</h4>

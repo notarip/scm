@@ -129,3 +129,12 @@ body {
   margin: auto;
   margin-top: 20px;
 }
+
+
+
+.productos-icon{
+  background-image: url('varias/icon-chain.png');
+  background-repeat: no-repeat;
+  display: block;
+  height: 65px;
+}

@@ -130,7 +130,27 @@ body {
   margin-top: 20px;
 }
 
+.crud-table{
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+}
+.btn-alta{
+  margin: 10px;
+  float: right;
+}
 
+.btn-actualizar{
+  margin: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.btn-eliminar{
+  margin: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;  
+}
 
 .productos-icon{
   background-image: url('varias/icon-chain.png');

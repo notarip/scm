@@ -17,7 +17,7 @@
                         </div>                            
                         <br/>
                         <ul>
-                            <li>Elaborados: 15</li>
+                            <li>Elaborados: ${countProductos}</li>
                             <li>Semi Elaborados: 30</li>
                             <li>Materia Prima: 67</li>
                         </ul>
@@ -62,7 +62,7 @@
                     </div>
                     <br/>                    
                 </div>
-                <div class="span4 dashboard-divider">
+                <div class="span4 dashboard-divider col-sm-4">
                     <div class="dashboard panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">Productos</h4>
@@ -74,6 +74,18 @@
                             <li>Materia Prima: 67</li>
                         </ul>
                     </div>
+                    <div class="dashboard panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Productos</h4>
+                        </div>                            
+                        <br/>
+                        <ul>
+                            <li>Elaborados: 15</li>
+                            <li>Semi Elaborados: 30</li>
+                            <li>Materia Prima: 67</li>
+                        </ul>
+                    </div>
+                    <br/>                    
                     <br/>
                 </div>
             </div>

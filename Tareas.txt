@@ -4,6 +4,7 @@ Tareas
 
 @Look & Feel
 
+- Seguir con los estilos del paginado
 - En _materiales.gsp tener en cuenta el caso en que no se puedan recuperar los productos
 - Agregar favicon
 - Solucionar lo de la imagen de borrado en la base para los materiales

@@ -51,8 +51,10 @@
                     <div class="alert alert-info" role="alert">${flash.message}</div>
                 </g:if>
             </div>
+            <div>
             <div class="pagination" >
                 <g:paginate total="${productoCount ?: 0}" />
+            </div>
             </div>
           </div>
           </div>

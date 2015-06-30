@@ -16,6 +16,10 @@ class Producto {
     static mapping = {
 		materiales cascade:"all,delete-orphan"
 	}
+
+	def getEsFinal(){
+		return materiales.isEmpty()
+	}
     
     def getMaterialesList() {
         return LazyList.decorate(materiales,FactoryUtils.instantiateFactory(Material.class))

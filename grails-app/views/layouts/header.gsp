@@ -45,7 +45,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">scm</a>
+          <div>
+            <a class="navbar-brand" href="/"><asset:image class="logo-header" src="logo.png" alt="scm"/></a>
+            <a class="navbar-brand" href="/">scm</a>
+          </div>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

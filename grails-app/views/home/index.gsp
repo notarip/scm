@@ -17,7 +17,7 @@
                         </div>                            
                         <br/>
                         <ul>
-                            <li>Elaborados: ${productosFinales}</li>
+                            <li>Elaborados: ${countProductos}</li>
                             <li>Semi Elaborados: 30</li>
                             <li>Materia Prima: 67</li>
                         </ul>

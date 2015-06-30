@@ -22,6 +22,8 @@ class Material {
 
     	this.producto = producto;
     	this.cantidad = materialCmd.cantidad;
+
+        println this.toString()
     }
 
 

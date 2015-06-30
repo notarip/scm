@@ -6,8 +6,17 @@ class HomeController {
 	static allowedMethods = []
 
 	def index() {
-		def productosFinales = Producto.countByEsFinal(true)
-		render view:"index", model: [productosFinales: productosFinales]
+
+		def productosFList = (1..3)
+		def productosMPList = (1..5)
+		def productosSEList = (1..7)
+		
+		def productosFCount  = productosFList.size()
+		def productosMPCount = productosMPList.size()
+		def productosSECount = productosSEList.size()
+
+		render view:"index", model: [productosFCount:productosFCount, productosMPCount: productosMPCount,
+		productosSECount: productosSECount]
 	}
 
 }

@@ -15,7 +15,7 @@
         <div>
             <g:link class="btn-alta btn btn-success" action="create">Nuevo</g:link>
         </div> 
-        <table class="table table-bordered" style="">
+        <table class="table table-bordered">
             <thead>
               <tr>
                 <th>#</th>
@@ -29,11 +29,11 @@
             <g:each in="${productoList}">
             <tr>
                 <td>${it.id}</td>
-                <td>${it.nombre}</td>
+                <td><g:link action="show" id="${it.id}">${it.nombre}</g:link></td>
                 <td>${it.descripcion}</td>
-                <td>51</td>
+                <td>${it.materiales.size()}</td>
                 <td colspan="2">
-                    <g:form resource="${producto}" method="DELETE">
+                    <g:form resource="${producto}">
                         <fieldset class="buttons">
                             <g:hiddenField name="id" value="${it?.id}" />
                             <g:actionSubmit class="btn-actualizar btn btn-warning" action="edit" value="Editar" />

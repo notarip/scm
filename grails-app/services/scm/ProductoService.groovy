@@ -13,8 +13,6 @@ class ProductoService {
         materialesBorrados.each{ println "materiales borrados: ${it}"}
         materialesBorrados.each{ material -> producto.materiales.remove(Material.get(material.id)) }
 
-        materialesBorrados.each{ println "materiales borrados: ${it}"}
-
         materialesNuevos.each{material -> 
 
             println "materiales nuevos: ${material}";

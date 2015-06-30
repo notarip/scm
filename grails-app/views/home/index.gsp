@@ -17,9 +17,9 @@
                         </div>                            
                         <br/>
                         <ul>
-                            <li>Elaborados: ${countProductos}</li>
-                            <li>Semi Elaborados: 30</li>
-                            <li>Materia Prima: 67</li>
+                            <li>Elaborados: ${productosFCount}</li>
+                            <li>Semi Elaborados: ${productosSECount}</li>
+                            <li>Materia Prima: ${productosMPCount}</li>
                         </ul>
                     </div>
                     <br/>
@@ -49,9 +49,9 @@
                         </ul>
                     </div>
                     <br/>
-                    <div class="dashboard panel panel-default">
+                   <div class="dashboard panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">Productos</h4>
+                            <h4 class="panel-title">Productos Fila 2</h4>
                         </div>                            
                         <br/>
                         <ul>
@@ -60,7 +60,7 @@
                             <li>Materia Prima: 67</li>
                         </ul>
                     </div>
-                    <br/>                    
+                    <br/>                  
                 </div>
                 <div class="span4 dashboard-divider col-sm-4">
                     <div class="dashboard panel panel-default">
@@ -74,9 +74,10 @@
                             <li>Materia Prima: 67</li>
                         </ul>
                     </div>
-                    <div class="dashboard panel panel-default">
+                    <br/>
+                  <div class="dashboard panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">Productos</h4>
+                            <h4 class="panel-title">Productos Fila 2</h4>
                         </div>                            
                         <br/>
                         <ul>
@@ -85,8 +86,7 @@
                             <li>Materia Prima: 67</li>
                         </ul>
                     </div>
-                    <br/>                    
-                    <br/>
+                    <br/>                     
                 </div>
             </div>
         </div>      

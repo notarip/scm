@@ -5,6 +5,7 @@ class Producto {
 	String nombre
 	String descripcion
 	List<Material> materiales = new ArrayList();
+	
 	static hasMany = [materiales:Material]
 
 	static mappedBy = [materiales: "productoPadre"]
@@ -15,10 +16,6 @@ class Producto {
 
     static mapping = {
 		materiales cascade:"all,delete-orphan"
-	}
-
-	def getEsFinal(){
-		return materiales.isEmpty()
 	}
     
     def getMaterialesList() {

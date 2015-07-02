@@ -152,6 +152,30 @@ body {
   margin-bottom: 0px;  
 }
 
+.btn-guardar{
+  float: right;
+}
+
+.btn-eliminar-material{
+  margin-left: 2px;
+  margin-top: 2px;
+  margin-right: 0px;
+  height: 30px;
+}
+
+.btn-alta-material{
+  margin: 2px;
+}
+
+.select-material{
+  width: 43%;
+  height: 28px;
+  display: table-cell;
+  padding: 0px;
+  margin-right: 4.5px;
+}
+
+
 .productos-icon{
   background-image: url('varias/icon-chain.png');
   background-repeat: no-repeat;

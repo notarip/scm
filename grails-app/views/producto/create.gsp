@@ -29,7 +29,6 @@
                 <fieldset class="form">
                     Nombre<g:field type="text" name="nombre" value="${producto?.nombre}"/>
                     Descripción<g:field type="text" name="descripcion" value="${producto?.descripcion}"/>
-                    <!-- f:all bean="producto"/ -->
                     <tr class="prop">
                         <td valign="top" class="name"><label for="books">materiales:</label></td>
                         <g:render template="materiales" model="['producto':producto]" />

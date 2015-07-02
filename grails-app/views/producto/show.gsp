@@ -44,7 +44,7 @@
             <g:form resource="${producto}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="btn-actualizar btn btn-warning" action="edit" resource="${producto}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="btn-actualizar btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <input class="btn-eliminar btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
         </div>

@@ -4,7 +4,6 @@ Tareas
 
 @Look & Feel
 
-- Hacer click en el producto y que te mande al show
 - estilos del show
 - estilos del edit
 - estilos del create

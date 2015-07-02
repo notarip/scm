@@ -36,7 +36,7 @@
 
 </script>
 
-<div id="childList">
+<div id="childList" class="materiales-container">
     <g:each var="material" in="${producto.materiales}" status="i">
         <g:render template='material' model="['material':material,'i':i]"/>
     </g:each>

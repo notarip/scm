@@ -175,6 +175,9 @@ body {
   margin-right: 4.5px;
 }
 
+.materiales-container{
+  width: 415px;
+}
 
 .productos-icon{
   background-image: url('varias/icon-chain.png');

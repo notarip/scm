@@ -4,18 +4,16 @@ Tareas
 
 @Look & Feel
 
-- estilos del show
-- estilos del edit
-- estilos del create
+- estilos del create (copiar los del edit)
+- internacionalizacion
 - En _materiales.gsp tener en cuenta el caso en que no se puedan recuperar los productos
 - Agregar favicon
-- Solucionar lo de la imagen de borrado en la base para los materiales
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
 
 
 @Comportamiento
 
-
+- Mejorar la info que se muestra en el dashboard
 - Los niveles de los productos se definene en relacion a los materiales:
 	- final - no tiene materiales
 	- semi elaborado - tiene materiales 

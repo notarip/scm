@@ -103,6 +103,8 @@ class ProductoController {
             return
         }
 
+        producto.setNombre(productoCmd.nombre)
+        producto.setDescripcion(productoCmd.descripcion)
         productoService.actualizarMateriales(producto, productoCmd)
 
         producto.save flush:true

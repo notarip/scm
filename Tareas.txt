@@ -4,6 +4,7 @@ Tareas
 
 @Look & Feel
 
+- No funciona el eliminar desde la lista de productos (por ahi conviene sacarlo y dejar solo el editar) 
 - estilos del create (copiar los del edit)
 - internacionalizacion
 - En _materiales.gsp tener en cuenta el caso en que no se puedan recuperar los productos
@@ -13,6 +14,7 @@ Tareas
 
 @Comportamiento
 
+- Manejar el error cuando se quiere eliminar un producto que esta como material de otro
 - Mejorar la info que se muestra en el dashboard
 - Los niveles de los productos se definene en relacion a los materiales:
 	- final - no tiene materiales

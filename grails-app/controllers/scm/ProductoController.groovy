@@ -40,7 +40,15 @@ class ProductoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Producto.list(params), model:[productoCount: Producto.count()]
+ 
+        def productoList = Producto.createCriteria().list (params) {
+            if ( params.query ) {
+                ilike("nombre", "%${params.query}%")
+            }
+        }
+ 
+
+        [productoList: productoList, productoCount: Producto.count()]
     }
 
     def show(Producto producto) {

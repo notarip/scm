@@ -12,9 +12,29 @@
         <div class="panel-heading">
             <h4 class="panel-title">Productos</h4>
         </div>
+        <div class="cabecera-grilla jumbotron">
+        <table>
+        <tr>
+        <td>
         <div>
-            <g:link class="btn-alta btn btn-success" action="create">Nuevo</g:link>
+            <g:link class="btn-alta btn btn-success" action="create">+ Producto</g:link>
         </div> 
+        </td>           
+        <td>
+            <fieldset class="form">
+                <g:form action="index" method="GET">
+                <div class="fieldcontain">
+                <label for="query">Buscar:</label>
+                <g:textField placeholder="Ej. Remera" name="query" value="${params.query}"/>
+                </div>
+                </g:form>
+            </fieldset>
+        </td>
+        </tr>
+            </div>
+        </table>
+
+        </div>
         <table class="table table-bordered">
             <thead>
               <tr>
@@ -22,7 +42,7 @@
                 <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>#Materiales</th>
-                <th>Acciones</th>                
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -37,7 +57,7 @@
                         <fieldset class="buttons">
                             <g:hiddenField name="id" value="${it?.id}" />
                             <g:actionSubmit class="btn-actualizar btn btn-warning" action="edit" value="Editar" />
-                            <g:actionSubmit class="btn-actualizar btn btn-danger" action="delete" value="Borrar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                            <!-- g:actionSubmit class="btn-actualizar btn btn-danger" action="delete" value="Borrar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" / -->
 
                         </fieldset>
                     </g:form>

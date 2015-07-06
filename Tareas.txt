@@ -4,16 +4,16 @@ Tareas
 
 @Look & Feel
 
-- No funciona el eliminar desde la lista de productos (por ahi conviene sacarlo y dejar solo el editar) 
 - estilos del create (copiar los del edit)
 - internacionalizacion
-- En _materiales.gsp tener en cuenta el caso en que no se puedan recuperar los productos
 - Agregar favicon
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
 
 
 @Comportamiento
 
+- agregar al producto la logica de final, secundario y primario y mostrarlo en la grilla de productos
+- Agregar desperdicio de material (?)
 - Manejar el error cuando se quiere eliminar un producto que esta como material de otro
 - Mejorar la info que se muestra en el dashboard
 - Los niveles de los productos se definene en relacion a los materiales:

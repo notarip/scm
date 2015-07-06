@@ -3,6 +3,8 @@ package scm
 
 class HomeController {
 
+    ProductoService productoService
+
 	static allowedMethods = []
 
 	def index() {
@@ -11,12 +13,12 @@ class HomeController {
 		def productosMPList = (1..5)
 		def productosSEList = (1..7)
 		
-		def productosFCount  = productosFList.size()
-		def productosMPCount = productosMPList.size()
-		def productosSECount = productosSEList.size()
+		def prodFinales  = productoService.cantidadFinales()
+		def prodPrimarios = productoService.cantidadPrimarios()
+		def prodSemiElab = productoService.cantidadSemiElaborados()
 
-		render view:"index", model: [productosFCount:productosFCount, productosMPCount: productosMPCount,
-		productosSECount: productosSECount]
+		render view:"index", model: [productosFCount:prodFinales, productosMPCount: prodPrimarios,
+		productosSECount: prodSemiElab]
 	}
 
 }

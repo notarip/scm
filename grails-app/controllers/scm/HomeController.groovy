@@ -15,7 +15,7 @@ class HomeController {
 		
 		def prodFinales  = productoService.cantidadFinales()
 		def prodPrimarios = productoService.cantidadPrimarios()
-		def prodSemiElab = productoService.cantidadSemiElaborados()
+		def prodSemiElab = productoService.cantidadSecundarios()
 
 		render view:"index", model: [productosFCount:prodFinales, productosMPCount: prodPrimarios,
 		productosSECount: prodSemiElab]

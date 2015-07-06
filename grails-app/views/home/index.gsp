@@ -17,9 +17,9 @@
                         </div>                            
                         <br/>
                         <ul>
-                            <li>Elaborados: ${productosFCount}</li>
-                            <li>Semi Elaborados: ${productosSECount}</li>
-                            <li>Materia Prima: ${productosMPCount}</li>
+                            <li>Finales: ${productosFCount}</li>
+                            <li>Secundarios: ${productosSECount}</li>
+                            <li>Primarios: ${productosMPCount}</li>
                         </ul>
                     </div>
                     <br/>

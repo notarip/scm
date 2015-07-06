@@ -5,12 +5,9 @@ class Producto {
 	String nombre
 	String descripcion
 	List<Material> materiales = new ArrayList();
-	Integer  cantidadtMateriales = materiales.size()
-	
-	static transients = ['cantidadtMateriales']
 
+	//static transients = ['cantidadtMateriales']
 	static hasMany = [materiales:Material]
-
 	static mappedBy = [materiales: "productoPadre"]
 
 	static constraints = {
@@ -21,9 +18,6 @@ class Producto {
 		materiales cascade:"all,delete-orphan"
 	}
     
-    def getMaterialesList() {
-        return LazyList.decorate(materiales,FactoryUtils.instantiateFactory(Material.class))
-    }
 
     def borrarMaterial(def idMaterial){
 
@@ -31,12 +25,48 @@ class Producto {
     		Material material = Material.get(idMaterial);
     		this.removeFromMateriales(material);
     	}
+    }
 
+
+    def esFinal(){
+
+        def esFinal = false
+
+        if (!materiales.isEmpty()){
+            def esParte = Material.findAllByProducto(this).size()
+            if(esParte == 0){
+                esFinal = true
+            }
+        }
+
+        return esFinal
+    }
+
+    def esPrimario(){
+
+        return materiales.isEmpty()
+    }
+
+    def esSecundario(){
+
+        return (!(materiales.isEmpty()) && !esFinal())
+
+    }
+
+    def getTipo(){
+
+        if(esPrimario()){
+            return "Primario"
+        }else if (esSecundario()){
+            return "Secundario"
+        }else{
+            return "Final"
+        }
+       
     }
 
     @Override
     public String toString(){
-
     	return "${nombre}";
     }
 

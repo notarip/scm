@@ -11,14 +11,9 @@ class ProductoService {
         def cantidad = 0    
 
         list.each{ producto ->
-            if (!producto.materiales.isEmpty()){
-                def esHijo = Material.findAllByProducto(producto).size()
-                if(esHijo == 0){
-                    println producto
-                    cantidad++
-                }
+            if(producto.esFinal()){
+                cantidad++
             }
-
         }
 
         return cantidad;
@@ -29,19 +24,19 @@ class ProductoService {
         def list = Producto.findAll()
         def cantidad = 0 
         list.each{ producto ->
-            if (producto.materiales.isEmpty()){
+            if (producto.esPrimario()){
                 cantidad++
             }
         }
         return cantidad
     }
 
-    def cantidadSemiElaborados(){
+    def cantidadSecundarios(){
 
         def list = Producto.findAll()
         def cantidad = 0 
         list.each{ producto ->
-            if (!producto.materiales.isEmpty()){
+            if (producto.esSecundario()){
                 cantidad++
             }
         }

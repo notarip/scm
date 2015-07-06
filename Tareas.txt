@@ -4,7 +4,6 @@ Tareas
 
 @Look & Feel
 
-- estilos del create (copiar los del edit)
 - internacionalizacion
 - Agregar favicon
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)

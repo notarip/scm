@@ -11,17 +11,11 @@ Tareas
 
 @Comportamiento
 
-- agregar al producto la logica de final, secundario y primario y mostrarlo en la grilla de productos
-- Agregar desperdicio de material (?)
-- Manejar el error cuando se quiere eliminar un producto que esta como material de otro
-- Mejorar la info que se muestra en el dashboard
-- Los niveles de los productos se definene en relacion a los materiales:
-	- final - no tiene materiales
-	- semi elaborado - tiene materiales 
-	- materia prima - no es padre en ningun material
 - Agregar las etapas de fabricacion de cada producto
+- Manejar el error cuando se quiere eliminar un producto que esta como material de otro
 - Ademas tiene que haber una relacion entre las etapas de fabricacion y las materiales de cada producto
 - Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
+- Agregar desperdicio de material (?)
 
 
 -------

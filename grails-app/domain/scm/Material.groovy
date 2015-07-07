@@ -5,6 +5,7 @@ class Material {
 	Producto productoPadre;
 	Producto producto;
 	Integer cantidad;
+    EtapaFabricacion etapaFabricacion
 	boolean _deleted;
 
 	static transients = [ '_deleted' ]
@@ -19,9 +20,11 @@ class Material {
     Material(def materialCmd){
 
         Producto producto = Producto.get(materialCmd.idProducto);
+        EtapaFabricacion etapa = EtapaFabricacion.get(materialCmd.idEtapa)
 
     	this.producto = producto;
     	this.cantidad = materialCmd.cantidad;
+        this.etapaFabricacion = etapa;
 
         println this.toString()
     }

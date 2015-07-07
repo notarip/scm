@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="images/favicon.ico">
+    <link href="${resource(dir: 'images', file: 'favicon.ico')}" rel="icon"/>
 
     <link href="${resource(dir: 'stylesheet', file: 'bootstrap-select.css')}" rel="stylesheet">
     <link href="${resource(dir: 'stylesheet', file: 'bootstrap.css')}" rel="stylesheet">

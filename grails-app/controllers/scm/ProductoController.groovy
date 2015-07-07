@@ -19,6 +19,7 @@ class MaterialCmd {
    Integer id
    Integer idProducto
    Integer cantidad
+   Integer idEtapa
    boolean _deleted
 
 }
@@ -64,8 +65,10 @@ class ProductoController {
 
         def producto = new Producto(nombre: productoCmd.nombre, descripcion: productoCmd.descripcion)
 
-        productoCmd.materiales.each{ material ->  producto.addToMateriales(new Material(material)) }
-        
+        //productoCmd.materiales.each{ material ->  producto.addToMateriales(new Material(material)) }
+
+        productoService.actualizarMateriales(producto, productoCmd)
+
         
         if (producto == null) {
             transactionStatus.setRollbackOnly()

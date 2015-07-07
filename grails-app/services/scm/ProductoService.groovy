@@ -60,6 +60,7 @@ class ProductoService {
         	if(material.id){
         		def p  = Material.get(material.id);
         		p.cantidad = material.cantidad;
+                //p.etapaFabricacion = EtapaFabricacion.get(material.idEtapa)
         		p.save();
         	}else{
         		producto.addToMateriales(new Material(material));

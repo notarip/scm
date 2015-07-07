@@ -2,11 +2,21 @@ package scm
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import groovy.transform.ToString
+import grails.converters.*
 
 @Transactional(readOnly = true)
 class EtapaFabricacionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    
+
+   def ajaxGetEtapas = {
+        def etapas = EtapaFabricacion.getAll()
+        render etapas as JSON
+    }
+
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)

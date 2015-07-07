@@ -2,6 +2,7 @@
 
     var childCount = ${producto?.materiales.size()} + 0;
     var productos = "";
+    var etapas = "";
 
     $.ajax({
         url:"/producto/ajaxGetProductos",
@@ -17,6 +18,21 @@
         //alert( "complete" );
     });
 
+    $.ajax({
+        url:"/etapaFabricacion/ajaxGetEtapas",
+        async:false
+    }).done(function(result) {
+        $.each(result, function() {
+            etapas += "<option value='"+ this.id + "'>" + this.nombre + "</option>\n";
+        });
+        
+    }).fail(function(result) {
+        alert( "error" );
+    }).always(function(result) {
+        //alert( "complete" );
+    });
+
+
 
     function addChild() {
 
@@ -24,9 +40,15 @@
 
         var templateHtml = "<div id='" + htmlId + "' name='" + htmlId + "'>\n";
         templateHtml += "<select class='form-control select-material' id='materiales[" + childCount + "].idProducto' name='materiales[" + childCount + "].idProducto'>\n";
-        templateHtml += productos
+        templateHtml += productos;
         templateHtml += "</select>\n";
         templateHtml += "<input type='number' id='materiales[" + childCount + "].cantidad' name='materiales[" + childCount + "].cantidad' />\n";
+
+        templateHtml += "<select class='form-control select-material' id='materiales[" + childCount + "].idEtapa' name='materiales[" + childCount + "].idEtapa'>\n";
+
+        templateHtml += etapas;
+        templateHtml += "</select>\n";
+
         templateHtml += "<span onClick='$(\"#" + htmlId + "\").remove();'><a class='btn-eliminar-material btn btn-danger'>Borrar<a/></span>\n";
         templateHtml += "</div>\n";
         $("#childList").append(templateHtml);

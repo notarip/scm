@@ -21,6 +21,10 @@ class BootStrap {
 		new Producto(nombre:"Saco",descripcion:"Saco Azul").save()
 		new Producto(nombre:"Remera",descripcion:"Remera Azul").save()				
 
+		new EtapaFabricacion(nombre:"Costura").save()
+		new EtapaFabricacion(nombre:"Pegado").save()
+		
+
 
 
 

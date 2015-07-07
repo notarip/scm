@@ -5,7 +5,6 @@ Tareas
 @Look & Feel
 
 - internacionalizacion
-- Agregar favicon
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
 
 

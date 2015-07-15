@@ -4,17 +4,20 @@ Tareas
 
 @Look & Feel
 
-- internacionalizacion
+- Acomodar los estilos en el agregado de materiales
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
 
 
 @Comportamiento
 
-- Agregar las etapas de fabricacion de cada producto
-- Manejar el error cuando se quiere eliminar un producto que esta como material de otro
+
+- Agregar botones de cancelar a las ediciones
+- Agregar filtros por tipo de producto (primario...)
+- Manejar el error cuando se quiere eliminar un producto que esta como material de otro (!!!!)
 - Ademas tiene que haber una relacion entre las etapas de fabricacion y las materiales de cada producto
 - Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
 - Agregar desperdicio de material (?)
+- internacionalizacion
 
 
 -------

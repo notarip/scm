@@ -13,11 +13,11 @@ Tareas
 
 - Agregar botones de cancelar a las ediciones
 - Agregar filtros por tipo de producto (primario...)
-- Manejar el error cuando se quiere eliminar un producto que esta como material de otro (!!!!)
 - Ademas tiene que haber una relacion entre las etapas de fabricacion y las materiales de cada producto
 - Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
 - Agregar desperdicio de material (?)
 - internacionalizacion
+- Manejar el error cuando se quiere eliminar un producto que esta como material de otro, ok
 
 
 -------

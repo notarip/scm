@@ -138,11 +138,17 @@ class ProductoController {
             return
         }
 
-        producto.delete flush:true
+        def msg;
+        if(producto.esFinal()){
+            producto.delete flush:true
+            msg = message(code: 'default.deleted.message', args: [message(code: 'producto.label', default: 'Producto'), producto.id])
+        }else{
+            msg = message(code: 'default.not.deleted.message', args: [message(code: 'producto.label', default: 'Producto'), producto.id])
+        }
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'producto.label', default: 'Producto'), producto.id])
+                flash.message = msg
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

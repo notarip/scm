@@ -32,7 +32,7 @@
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
                                 <g:each var="p" in="${producto.materiales}">
-                                    <li><g:link controller="material" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+                                    <li>${p?.encodeAsHTML()}</li>
                                 </g:each>
                                 </ul>
                             </td>

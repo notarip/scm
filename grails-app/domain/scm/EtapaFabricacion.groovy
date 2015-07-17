@@ -6,4 +6,11 @@ class EtapaFabricacion {
 
     static constraints = {
     }
+
+
+    @Override
+    public String toString(){
+
+    	return "${nombre}";
+    }
 }

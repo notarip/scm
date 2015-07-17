@@ -33,6 +33,6 @@ class Material {
     @Override
     public String toString(){
 
-    	return "${producto} - ${cantidad}";
+    	return "${producto} - ${cantidad} - ${etapaFabricacion}";
     }
 }

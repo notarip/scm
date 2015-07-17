@@ -170,15 +170,16 @@ body {
 }
 
 .select-material{
-  width: 43%;
+  width: auto !important;
   height: 28px;
   display: table-cell;
   padding: 0px;
   margin-right: 4.5px;
+  
 }
 
 .materiales-container{
-  width: 415px;
+  width: 610px;
 }
 
 .productos-icon{

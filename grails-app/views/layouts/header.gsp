@@ -58,6 +58,7 @@
                 <li><a href="/producto">Productos</a></li>
                 <li><a href="/proyectoFabricacion">Proyectos</a></li>
                 <li><a href="/material">Materiales</a></li>
+                <li><a href="/puntoFabricacion">Puntos de Fabricacion</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <!--li><a href="#">Separated link</a></li-->

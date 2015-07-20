@@ -40,6 +40,8 @@ assets {
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven { url "http://repo.grails.org/grails/plugins-releases" }
+
 }
 
 dependencyManagement {
@@ -74,6 +76,8 @@ dependencies {
 
 
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4" 
+    compile "org.grails.plugins:google-visualization:1.0.2"
+
 }
 
 task wrapper(type: Wrapper) {

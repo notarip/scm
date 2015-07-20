@@ -13,6 +13,23 @@ class BootStrap {
 		def pegado = new EtapaFabricacion(nombre:"Pegado").save()
 		def lavado = new EtapaFabricacion(nombre:"Lavado").save()
 
+		println "Cargando Puntos de Fabricacion..."
+
+		def punto1 = new PuntoFabricacion(nombre:"Taller 1", interno:new Boolean(false)).save()
+		punto1.addToEtapas(corte)
+		punto1.addToEtapas(costura)
+		punto1.save()
+
+		def punto2 = new PuntoFabricacion(nombre:"Taller 2", interno:new Boolean(false)).save()
+		punto2.addToEtapas(pegado)
+		punto2.save()
+
+		def punto3 = new PuntoFabricacion(nombre:"Puesto 1", interno:new Boolean(true)).save()
+		punto3.addToEtapas(lavado)
+		punto3.save()
+
+
+
 		println "Cargando Productos Primarios..."
 		
 		def boton1 = new Producto(nombre:"B001 - Boton N5",descripcion:"Boton de camisa N5").save()

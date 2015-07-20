@@ -10,7 +10,7 @@
     <div class="container" role="navigation">
         <div class="crud-table panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title">Producto</h4>
+                <h4 class="panel-title">${message(code: 'producto.label', default: 'Producto')}</h4>
             </div>
                  <g:form resource="${producto}" method="PUT">
                  <table>
@@ -31,6 +31,7 @@
                             <g:render template="materiales" model="['producto':producto]"/>
                             </td>
                         </tr>   
+                        <g:link class="btn-guardar btn btn-info" action="index">${message(code: 'default.button.cancel.label', default: 'Cancelar')}</g:link>
                         <input class="btn-guardar btn btn-success" type="submit" value="${message(code: 'default.button.update.label', default: 'Guardar')}" />
                     </fieldset>
                     </table>

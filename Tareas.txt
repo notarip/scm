@@ -4,20 +4,20 @@ Tareas
 
 @Look & Feel
 
-- Acomodar los estilos en el agregado de materiales
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
+- Acomodar los estilos en el agregado de materiales, ok
 
 
 @Comportamiento
 
-
-- Agregar botones de cancelar a las ediciones
+- Seguir con los puntos de fabricacion
 - Agregar filtros por tipo de producto (primario...)
-- Ademas tiene que haber una relacion entre las etapas de fabricacion y las materiales de cada producto
+- Ademas tiene que haber una relacion entre las etapas de fabricacion y los materiales de cada producto
 - Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
 - Agregar desperdicio de material (?)
 - internacionalizacion
 - Manejar el error cuando se quiere eliminar un producto que esta como material de otro, ok
+- Agregar botones de cancelar a las ediciones, ok
 
 
 -------
@@ -27,7 +27,9 @@ Entidades:
 
 *Etapa de Fabricación: Cada una de las etapas de fabricación, por ejemplo: “Corte de puños”, “Costura de puños”, “Pegado de botones”. La confección de cada artículo esta relacionado con varias o ninguna etapa de el fabricación.
 
-*Pedido de Cotización: Es el paso previo a la orden de fabricación, el taller especifica los costos y el tiempo de confección.
+*Punto de Fabricacion:
+
+*Pedido de Cotización: Es el paso previo a la orden de fabricación, el punto de fabricacion especifica los costos y el tiempo de confección.
 
 *Orden de Fabricación: Es una orden especifica para un taller de fabricación, ejemplo: “Costura de dos mil puños de camisas – C1010”. Incluye los articulos va a recibir para la fabricación y los que debe entregar, los costos de la confección y la fecha de entrega.
 

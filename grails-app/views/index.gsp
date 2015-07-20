@@ -85,6 +85,9 @@
                             <li>Materia Prima: 67</li>
                         </ul>
                     </div>
+
+
+
                     <br/>                    
                     <br/>
                 </div>

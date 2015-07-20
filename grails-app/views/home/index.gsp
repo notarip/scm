@@ -5,7 +5,8 @@
         <meta name="layout" content="header"/>
     </head>
     <body>
-        <div class="dashboard panel panel-default">
+
+       <div class="dashboard panel panel-default">
             <div class="panel-heading">
                  <h1 class="panel-title">Dashboard</h1>
             </div>
@@ -25,13 +26,12 @@
                     <br/>
                     <div class="dashboard panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">Productos Fila 2</h4>
+                            <h4 class="panel-title">Punto de Fabricacion</h4>
                         </div>                            
                         <br/>
                         <ul>
-                            <li>Elaborados: 15</li>
-                            <li>Semi Elaborados: 30</li>
-                            <li>Materia Prima: 67</li>
+                            <li>Propios: 15</li>
+                            <li>Externos: 30</li>
                         </ul>
                     </div>
                     <br/>                    
@@ -89,6 +89,6 @@
                     <br/>                     
                 </div>
             </div>
-        </div>      
+        </div>  
     </body>
 </html>

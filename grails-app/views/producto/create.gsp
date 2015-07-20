@@ -31,6 +31,7 @@
                             <g:render template="materiales" model="['producto':producto]"/>
                             </td>
                         </tr>   
+                        <g:link class="btn-guardar btn btn-info" action="index">${message(code: 'default.button.cancel.label', default: 'Cancelar')}</g:link>                        
                         <input class="btn-guardar btn btn-success" type="submit" value="${message(code: 'default.button.save.label', default: 'Guardar')}" />
                     </fieldset>
                     </table>

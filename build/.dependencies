@@ -6,6 +6,7 @@ file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-boot/3
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails.plugins/hibernate/4.3.8.0/315d9205dc174b125e3dbee7b651ca18ae30cc16/hibernate-4.3.8.0.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails.plugins/cache/3.0.1/7a360b62877f81907d9aa6f76b8019912d3a2031/cache-3.0.1.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-ehcache/4.3.8.Final/f040321945cbc2040d49f6cd9e273b4a76b59258/hibernate-ehcache-4.3.8.Final.jar
+file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails.plugins/google-visualization/1.0.2/a09f317c470bde7a031949e394d576be04715156/google-visualization-1.0.2.zip
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails.plugins/asset-pipeline/3.0.1/77615e9144d6c11a2d800ab4057430e265f5e061/asset-pipeline-3.0.1.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails.plugins/scaffolding/3.0.2/ab809720087be0898e252edd0978eee9ed1125c6/scaffolding-3.0.2.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-testing/3.0.1/adfc3d460b04fbfce7eb470a6743e40ad88501/grails-plugin-testing-3.0.1.jar
@@ -89,7 +90,7 @@ file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.hibernate.javax.persiste
 file:/home/pablo/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.jboss/jandex/1.1.0.Final/e84a2122e76f0b6503be78094ddf2108057ac15f/jandex-1.1.0.Final.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/com.google.javascript/closure-compiler/v20141023/b0bc533425f44e34210d4ecb57721db329f0cb30/closure-compiler-v20141023.jar
-file:/home/pablo/.gradle/caches/modules-2/files-2.1/asm/asm/3.3.1/1d5f20b4ea675e6fab6ab79f1cd60ec268ddc015/asm-3.3.1.jar
+file:/home/pablo/.m2/repository/asm/asm/3.3.1/asm-3.3.1.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails/grails-async/3.0.1/7386e506d6cd995f796fbf07b8919ed636886657/grails-async-3.0.1.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-validation/3.0.1/1bbf2fa50f48f065ffb98bcdc1dae17fe4f0490/grails-plugin-validation-3.0.1.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.grails/grails-spring/3.0.1/eb6034573eafcaf44523686c839d400e8805f277/grails-spring-3.0.1.jar
@@ -146,7 +147,7 @@ file:/home/pablo/.gradle/caches/modules-2/files-2.1/com.google.javascript/closur
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/args4j/args4j/2.0.26/1ebb18ebb3b379a74207d5af4ea7c8338ebd78b/args4j-2.0.26.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/18.0/cce0823396aa693798f8882e64213b1772032b09/guava-18.0.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java/2.5.0/a10732c76bfacdbd633a7eb0f7968b1059a65dfa/protobuf-java-2.5.0.jar
-file:/home/pablo/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar
+file:/home/pablo/.m2/repository/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/org.codehaus.gpars/gpars/1.2.1/c3ea0fbcd67a163bd5e3a3efdaa3428262d0d437/gpars-1.2.1.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-core/2.0.0.RELEASE/828b8dc89722d6a21ff9ecc18d803464864231fc/reactor-core-2.0.0.RELEASE.jar
 file:/home/pablo/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-stream/2.0.0.RELEASE/41a02f7a0d9d751bd5c986b6fe7802c6e7984d50/reactor-stream-2.0.0.RELEASE.jar

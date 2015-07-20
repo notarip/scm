@@ -9,16 +9,20 @@ class HomeController {
 
 	def index() {
 
-		def productosFList = (1..3)
-		def productosMPList = (1..5)
-		def productosSEList = (1..7)
-		
 		def prodFinales  = productoService.cantidadFinales()
 		def prodPrimarios = productoService.cantidadPrimarios()
 		def prodSemiElab = productoService.cantidadSecundarios()
 
-		render view:"index", model: [productosFCount:prodFinales, productosMPCount: prodPrimarios,
-		productosSECount: prodSemiElab]
+		def puntosPropios = 10
+		def puntosExternos = 50
+
+
+		render view:"index", model: [
+		productosFCount:prodFinales, 
+		productosMPCount: prodPrimarios,
+		productosSECount: prodSemiElab,
+		puntosPropios: puntosPropios,
+		puntosExternos:puntosExternos]
 	}
 
 }

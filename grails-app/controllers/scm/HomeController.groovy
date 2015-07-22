@@ -4,6 +4,7 @@ package scm
 class HomeController {
 
     ProductoService productoService
+    PuntoFabricacionService puntoFabricacionService
 
 	static allowedMethods = []
 
@@ -13,15 +14,15 @@ class HomeController {
 		def prodPrimarios = productoService.cantidadPrimarios()
 		def prodSemiElab = productoService.cantidadSecundarios()
 
-		def puntosPropios = 10
-		def puntosExternos = 50
+		def puntosInternos = puntoFabricacionService.cantidadInternos()
+		def puntosExternos = puntoFabricacionService.cantidadExternos()
 
 
 		render view:"index", model: [
 		productosFCount:prodFinales, 
 		productosMPCount: prodPrimarios,
 		productosSECount: prodSemiElab,
-		puntosPropios: puntosPropios,
+		puntosInternos: puntosInternos,
 		puntosExternos:puntosExternos]
 	}
 

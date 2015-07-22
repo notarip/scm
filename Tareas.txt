@@ -10,7 +10,8 @@ Tareas
 
 @Comportamiento
 
-- Seguir con los puntos de fabricacion
+- Seguir con la cta cte de productos
+
 - Agregar filtros por tipo de producto (primario...)
 - Ademas tiene que haber una relacion entre las etapas de fabricacion y los materiales de cada producto
 - Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
@@ -18,6 +19,17 @@ Tareas
 - internacionalizacion
 - Manejar el error cuando se quiere eliminar un producto que esta como material de otro, ok
 - Agregar botones de cancelar a las ediciones, ok
+
+
+- Pedido de Cotizacion:
+queda asignado a un taller de modo de despues se pueda poner en la bandeja del jefe de ese taller
+
+- orden de fabricacion:
+queda asignado a un taller de modo de despues se pueda poner en la bandeja del jefe de ese taller
+
+- Pedido de productos: 
+no queda asignado a nadie, es una vista del jefe de suministros
+
 
 
 -------

@@ -21,7 +21,6 @@ class MaterialCmd {
    Integer cantidad
    Integer idEtapa
    boolean _deleted
-
 }
 
 @Transactional(readOnly = true)
@@ -64,8 +63,6 @@ class ProductoController {
     def save(ProductoCmd productoCmd) {
 
         def producto = new Producto(nombre: productoCmd.nombre, descripcion: productoCmd.descripcion)
-
-        //productoCmd.materiales.each{ material ->  producto.addToMateriales(new Material(material)) }
 
         productoService.actualizarMateriales(producto, productoCmd)
 
@@ -114,9 +111,8 @@ class ProductoController {
             return
         }
 
-        producto.setNombre(productoCmd.nombre)
-        producto.setDescripcion(productoCmd.descripcion)
-        productoService.actualizarMateriales(producto, productoCmd)
+        
+        productoService.actualizarProducto(producto, productoCmd)
 
         producto.save flush:true
 

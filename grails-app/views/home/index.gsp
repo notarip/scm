@@ -30,8 +30,8 @@
                         </div>                            
                         <br/>
                         <ul>
-                            <li>Propios: 15</li>
-                            <li>Externos: 30</li>
+                            <li>Propios: ${puntosInternos}</li>
+                            <li>Externos: ${puntosExternos}</li>
                         </ul>
                     </div>
                     <br/>                    

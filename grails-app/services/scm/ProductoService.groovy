@@ -44,6 +44,13 @@ class ProductoService {
     }
 
 
+    def actualizarProducto(Producto producto, def productoCmd){
+
+        producto.setNombre(productoCmd.nombre)
+        producto.setDescripcion(productoCmd.descripcion)
+        actualizarMateriales(producto, productoCmd)
+    }
+
 
     def actualizarMateriales(Producto producto, def productoCmd) {
 

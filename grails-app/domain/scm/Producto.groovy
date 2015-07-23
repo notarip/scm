@@ -6,7 +6,6 @@ class Producto {
 	String descripcion
 	List<Material> materiales = new ArrayList();
 
-	//static transients = ['cantidadtMateriales']
 	static hasMany = [materiales:Material]
 	static mappedBy = [materiales: "productoPadre"]
 

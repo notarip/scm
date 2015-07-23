@@ -10,7 +10,7 @@ Tareas
 
 @Comportamiento
 
-- Seguir con la cta cte de productos
+- Seguir con la cta cte de productos, mejorar el show
 
 - Agregar filtros por tipo de producto (primario...)
 - Ademas tiene que haber una relacion entre las etapas de fabricacion y los materiales de cada producto

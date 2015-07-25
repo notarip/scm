@@ -12,26 +12,29 @@
         <div class="panel-heading">
             <h4 class="panel-title">Movimiento Cuenta Corriente</h4>
         </div>
+            <fieldset class="buttons">
+                <g:link class="btn-guardar btn btn-info" action="index">${message(code: 'default.button.back.label', default: 'Volver')}</g:link>            
+            </fieldset>        
             <div class="dialog">
-                <table>
-                    <tbody>
+
+            <div class="cabecera-grilla jumbotron">
+            <table>
+            <tbody>
                         <tr class="prop">
                             <td valign="top" class="name">Producto:</td>
-                            <td valign="top" class="value">${fieldValue(bean:cuentaCorrienteProducto, field:'producto.nombre')}</td>
+                            <td valign="top" class="value">${producto.nombre}</td>
                         </tr>
                         <tr class="prop">
                             <td valign="top" class="name">Disponibilidad:</td>
                             <td valign="top" class="value">${disponibilidad}</td>
                         </tr>
                     </tbody>
-                </table>
+            </table>
             </div>
-            <g:form resource="${cuentaCorrienteProducto}" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="btn-actualizar btn btn-warning" action="edit" resource="${cuentaCorrienteProducto}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <input class="btn-eliminar btn btn-danger" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
+            
+                 <g:render template="grid" model="['cuentaCorrienteProductoList':cuentaCorrienteProductoList]"/>
+
+            </div>
         </div>
     </div>
         <g:if test="${flash.message}">

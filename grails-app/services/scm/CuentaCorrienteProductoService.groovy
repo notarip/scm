@@ -37,7 +37,7 @@ class CuentaCorrienteProductoService {
 
     def obtenerDisponibilidad(Producto producto){
 
-    	println "${producto}"
+    	log.info "${producto}"
 
     	def ccprod =  CuentaCorrienteProducto.findAll("from CuentaCorrienteProducto as ccp where ccp.producto = ?",
                          [producto])
@@ -52,9 +52,18 @@ class CuentaCorrienteProductoService {
     			disponible -= mov.cantidad
     	}
 
-    	println disponible
+    	log.info disponible
 
     	return disponible
+    }
+
+    def obtenerMovimientos(Producto producto){
+
+        def movimientos =  CuentaCorrienteProducto.findAll("from CuentaCorrienteProducto as ccp where ccp.producto = ?  order by ccp.fecha desc",[producto])
+
+        return movimientos
 
     }
+
+
 }

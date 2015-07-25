@@ -57,12 +57,12 @@ class ProductoService {
 		def materialesNuevos = productoCmd.materiales.findAll{ !(it._deleted) }
         def materialesBorrados = productoCmd.materiales.findAll{ it._deleted }
         
-        materialesBorrados.each{ println "materiales borrados: ${it}"}
+        materialesBorrados.each{ log.info "materiales borrados: ${it}"}
         materialesBorrados.each{ material -> producto.materiales.remove(Material.get(material.id)) }
 
         materialesNuevos.each{material -> 
 
-            println "materiales nuevos: ${material}";
+            log.info "materiales nuevos: ${material}";
 
         	if(material.id){
         		def p  = Material.get(material.id);

@@ -59,6 +59,7 @@
                         <fieldset class="buttons">
                             <g:hiddenField name="id" value="${it?.id}" />
                             <g:actionSubmit class="btn-actualizar btn btn-warning" action="edit" value="${message(code: 'default.button.edit.label', default: 'Editar')}" />
+                            <g:link class="btn-actualizar btn btn-info" controller="cuentaCorrienteProducto" action="show" id="${it.id}">${message(code: 'default.button.aviable.label', default: 'Disponibilidad')}</g:link>
                             <!-- g:actionSubmit class="btn-actualizar btn btn-danger" action="delete" value="Borrar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" / -->
 
                         </fieldset>

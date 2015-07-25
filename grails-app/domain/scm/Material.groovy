@@ -26,7 +26,7 @@ class Material {
     	this.cantidad = materialCmd.cantidad;
         this.etapaFabricacion = etapa;
 
-        println this.toString()
+        log.info this.toString()
     }
 
 

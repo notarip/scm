@@ -3,8 +3,19 @@ package scm
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+
+class ProyectoCmd{
+    Integer id
+    Integer idProducto
+    Integer cantidad
+    Date fecha
+}
+
+
 @Transactional(readOnly = true)
 class ProyectoFabricacionController {
+
+    ProyectoFabricacionService proyectoFabricacionService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -22,7 +33,10 @@ class ProyectoFabricacionController {
     }
 
     @Transactional
-    def save(ProyectoFabricacion proyectoFabricacion) {
+    def save(ProyectoCmd proyectoCmd) {
+
+        ProyectoFabricacion proyectoFabricacion = ProyectoFabricacion.get(proyectoCmd.id)
+
         if (proyectoFabricacion == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -34,6 +48,8 @@ class ProyectoFabricacionController {
             respond proyectoFabricacion.errors, view:'create'
             return
         }
+
+        proyectoFabricacionService.crearProyecto(proyectoFabricacion, proyectoCmd)
 
         proyectoFabricacion.save flush:true
 

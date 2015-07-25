@@ -10,6 +10,10 @@ appender('STDOUT', ConsoleAppender) {
 }
 
 root(ERROR, ['STDOUT'])
+logger("scm", INFO, ['STDOUT'])
+logger("grails.app.init", INFO, ['STDOUT'])
+
+
 
 if(Environment.current == Environment.DEVELOPMENT) {
     def targetDir = BuildSettings.TARGET_DIR

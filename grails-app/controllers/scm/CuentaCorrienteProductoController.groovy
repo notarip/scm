@@ -26,15 +26,18 @@ class CuentaCorrienteProductoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        params.sort = "fecha"
+        params.order = "desc"
 
         respond CuentaCorrienteProducto.list(params), model:[cuentaCorrienteProductoCount: CuentaCorrienteProducto.count()]
     }
 
-    def show(CuentaCorrienteProducto cuentaCorrienteProducto) {
+    def show(Producto producto) {
 
-        def disponibilidad = cuentaCorrienteProductoService.obtenerDisponibilidad(cuentaCorrienteProducto.producto)
+        def disponibilidad = cuentaCorrienteProductoService.obtenerDisponibilidad(producto)
+        def cuentaCorrienteProductoList = cuentaCorrienteProductoService.obtenerMovimientos(producto)
 
-        [cuentaCorrienteProducto: cuentaCorrienteProducto, disponibilidad: disponibilidad]
+        [producto:producto, cuentaCorrienteProductoList:cuentaCorrienteProductoList, disponibilidad: disponibilidad]
     }
 
     def create() {

@@ -52,12 +52,12 @@ class PuntoFabricacionService {
 		def etapasNuevas = puntoCmd.etapas.findAll{ !(it._deleted) }
         def etapasBorradas = puntoCmd.etapas.findAll{ it._deleted }
         
-        etapasBorradas.each{ println "etapas borradas: ${it}"}
+        etapasBorradas.each{ log.info "etapas borradas: ${it}"}
         etapasBorradas.each{ etapa -> punto.etapas.remove(EtapaFabricacion.get(etapa.id)) }
 
         etapasNuevas.each{etapa -> 
 
-            println "etapa nueva: ${etapa}";
+            log.info "etapa nueva: ${etapa}";
             def e = EtapaFabricacion.get(etapa.id)
 
             if(!punto.etapas.contains(e)){

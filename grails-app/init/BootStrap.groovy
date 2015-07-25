@@ -4,16 +4,16 @@ class BootStrap {
 
     def init = { servletContext ->
 
-    	println "******************* PROCESO DE HIDRATACION ****************************"
+    	log.info "******************* PROCESO DE HIDRATACION ****************************"
 
-		println "Cargando Etapas..."
+		log.info "Cargando Etapas..."
 
 		def corte = new EtapaFabricacion(nombre:"Corte").save()
 		def costura = new EtapaFabricacion(nombre:"Costura").save()
 		def pegado = new EtapaFabricacion(nombre:"Pegado").save()
 		def lavado = new EtapaFabricacion(nombre:"Lavado").save()
 
-		println "Cargando Puntos de Fabricacion..."
+		log.info "Cargando Puntos de Fabricacion..."
 
 		def punto1 = new PuntoFabricacion(nombre:"Taller 1", interno:new Boolean(false)).save()
 		punto1.addToEtapas(corte)
@@ -30,7 +30,7 @@ class BootStrap {
 
 
 
-		println "Cargando Productos Primarios..."
+		log.info "Cargando Productos Primarios..."
 		
 		def boton1 = new Producto(nombre:"B001 - Boton N5",descripcion:"Boton de camisa N5").save()
 		def boton2 = new Producto(nombre:"B002 - Boton N3",descripcion:"Boton N3").save()
@@ -39,14 +39,12 @@ class BootStrap {
 		def tela3 = new Producto(nombre:"T003 - Tela Pique Elastica ",descripcion:"Tela Pique Azul Elastica").save()
 		def hilo1 = new Producto(nombre:"H001 - Hilo Negro ",descripcion:"Hilo negro").save()
 
-		println "Cargando Productos Secundarios..."
+		log.info "Cargando Productos Secundarios..."
 
 		def punio1 = new Producto(nombre:"P001 - Puño T1",descripcion:"Puño T").save()
 		punio1.addToMateriales(new Material(producto:tela1,cantidad:10, etapaFabricacion: costura))
 		punio1.addToMateriales(new Material(producto:hilo1,cantidad:1000, etapaFabricacion: costura))
 		punio1.save()
-
-		println "Cargando Productos Secundarios I..."
 
 		def cuello1 = new Producto(nombre:"C001 - Cuello T1",descripcion:"Cuello T1").save()
 		cuello1.addToMateriales(new Material(producto:tela1,cantidad:5, etapaFabricacion: costura))
@@ -64,8 +62,6 @@ class BootStrap {
 		def manga1 = new Producto(nombre:"MA001 - Manga T1",descripcion:"Manga T1").save()
 		manga1.addToMateriales(new Material(producto:tela1,cantidad:20, etapaFabricacion: corte))
 		manga1.save()
-
-
 
 		def manga2 = new Producto(nombre:"MA001 - Manga Chomba T1",descripcion:"Manga T1").save()
 		manga2.addToMateriales(new Material(producto:tela2,cantidad:20, etapaFabricacion: corte))
@@ -85,7 +81,7 @@ class BootStrap {
 		espalda2.save()
 
 
-		println "Cargando Productos Finales..."	
+		log.info "Cargando Productos Finales..."	
 
 		def camisa1 = new Producto(nombre:"CA001 - Camisa",descripcion:"Camisa T1").save()
 		camisa1.addToMateriales(new Material(producto:punio1,cantidad:2, etapaFabricacion: costura))
@@ -105,20 +101,50 @@ class BootStrap {
 		chomba1.save()
 
 
-		new Producto(nombre:"Pantalon",descripcion:"Pantalon Rojo").save()
-		new Producto(nombre:"Short",descripcion:"Short de baño Rojo").save()
-		new Producto(nombre:"Saco",descripcion:"Saco Azul").save()
-		new Producto(nombre:"Remera",descripcion:"Remera Roja").save()				
+		def p1 = new Producto(nombre:"Pantalon",descripcion:"Pantalon Rojo").save()
+		def p2 = new Producto(nombre:"Short",descripcion:"Short de baño Rojo").save()
+		def p3 = new Producto(nombre:"Saco",descripcion:"Saco Azul").save()
+		def p4 = new Producto(nombre:"Remera",descripcion:"Remera Roja").save()				
 
-		new Producto(nombre:"Chomba",descripcion:"Chomba Azul").save()
-		new Producto(nombre:"Pantalon",descripcion:"Pantalon Azul").save()
-		new Producto(nombre:"Short",descripcion:"Short de baño Azul").save()
-		new Producto(nombre:"Saco",descripcion:"Saco Azul").save()
-		new Producto(nombre:"Remera",descripcion:"Remera Azul").save()				
+		def p5 = new Producto(nombre:"Chomba",descripcion:"Chomba Azul").save()
+		def p6 = new Producto(nombre:"Pantalon",descripcion:"Pantalon Azul").save()
+		def p7 = new Producto(nombre:"Short",descripcion:"Short de baño Azul").save()
+		def p8 = new Producto(nombre:"Saco",descripcion:"Saco Azul").save()
+		def p9 = new Producto(nombre:"Remera",descripcion:"Remera Azul").save()				
 
+		log.info "Cargando en la Cuenta Corriente..."
+
+		//cuello1 ,pechera1,espalda1,manga1,manga2 ,cuello2,pechera2,espalda2
+
+		new CuentaCorrienteProducto(producto:boton1,ingreso:true,origen:"Stock",cantidad:1000).save()
+		new CuentaCorrienteProducto(producto:boton2,ingreso:true,origen:"Stock",cantidad:1000).save()
+		new CuentaCorrienteProducto(producto:tela1,ingreso:true,origen:"Stock",cantidad:4000).save()
+		new CuentaCorrienteProducto(producto:tela2,ingreso:true,origen:"Stock",cantidad:4000).save()
+		new CuentaCorrienteProducto(producto:tela3,ingreso:true,origen:"Stock",cantidad:4000).save()
+		new CuentaCorrienteProducto(producto:hilo1,ingreso:true,origen:"Stock",cantidad:4000).save()
 		
-		
 
+
+		new CuentaCorrienteProducto(producto:p1,ingreso:true,origen:"Orden",cantidad:10).save()
+		new CuentaCorrienteProducto(producto:p2,ingreso:true,origen:"Orden",cantidad:20).save()
+		new CuentaCorrienteProducto(producto:p3,ingreso:true,origen:"Orden",cantidad:30).save()
+		new CuentaCorrienteProducto(producto:p4,ingreso:true,origen:"Orden",cantidad:40).save()
+		new CuentaCorrienteProducto(producto:p5,ingreso:true,origen:"Orden",cantidad:10).save()
+		new CuentaCorrienteProducto(producto:p6,ingreso:true,origen:"Orden",cantidad:20).save()
+		new CuentaCorrienteProducto(producto:p7,ingreso:true,origen:"Orden",cantidad:30).save()
+		new CuentaCorrienteProducto(producto:p8,ingreso:true,origen:"Orden",cantidad:40).save()
+		new CuentaCorrienteProducto(producto:p9,ingreso:true,origen:"Orden",cantidad:50).save()
+
+		new CuentaCorrienteProducto(producto:p2,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p1,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p3,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p4,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p5,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p6,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p7,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p8,ingreso:false,origen:"Stock",cantidad:15).save()
+		new CuentaCorrienteProducto(producto:p9,ingreso:false,origen:"Stock",cantidad:15).save()
+		
 
 
 

@@ -10,12 +10,8 @@ Tareas
 
 @Comportamiento
 
-- Seguir con la cta cte de productos, mejorar el show
-
-- Agregar filtros por tipo de producto (primario...)
-- Ademas tiene que haber una relacion entre las etapas de fabricacion y los materiales de cada producto
-- Las etapas de fabricacion se pueden cubrir con talleres o con personal propio
-- Agregar desperdicio de material (?)
+- agregar spck para la creacion del proyecto
+- Serguir con el controler y el servicio para crear proyectos de fabricacion
 - internacionalizacion
 - Manejar el error cuando se quiere eliminar un producto que esta como material de otro, ok
 - Agregar botones de cancelar a las ediciones, ok

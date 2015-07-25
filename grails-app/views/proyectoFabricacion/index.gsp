@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html>
+    <%@ page import="scm.*"%>
     <head>
-        <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'proyectoFabricacion.label', default: 'ProyectoFabricacion')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
+        <meta name="layout" content="header"/>
+        <title>scm</title>
+        <g:set var="entityName" value="${message(code: 'proyectoFabricacion.label', default: 'Movimiento CC Producto')}" />
+        <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#list-proyectoFabricacion" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="list-proyectoFabricacion" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${proyectoFabricacionList}" />
-
-            <div class="pagination">
-                <g:paginate total="${proyectoFabricacionCount ?: 0}" />
+    <div class="container" role="navigation">
+        <div class="crud-table panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Proyecto Fabricacion</h4>
             </div>
+                 <g:form  action="save">
+                 <table>
+                    <g:hiddenField name="version" value="${proyectoFabricacion?.version}" />
+                    <fieldset class="form">
+                        <g:hiddenField type="text" name="id" value="${proyectoFabricacion?.id}"/>
+                        <tr class="prop">
+                            <td valign="top" class="name">Producto</td>
+                            <td valign="top" class="value">
+                            <g:select name="producto" class='form-control select-material' from="${Producto.list()}" value="" optionKey="id" /></td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name">Orden</td>
+                            <td valign="top" class="value"><g:select class='form-control select-material' name="orden" from="${OrdenFabricacion.list()}" noSelection="${['null':'Orden...']}" value="" optionKey="id" /></td>
+                            <td valign="top" class="name">Punto</td>
+                            <td valign="top" class="value"><g:select class='form-control select-material' name="punto" from="${PuntoFabricacion.list()}"  noSelection="${['null':'Punto...']}" value="" optionKey="id" /></td>
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">Origen</td>
+                            <td valign="top" class="value"><g:select class='form-control select-material' name="origen" 
+                            from="${['Stock','Orden']}" value=""/></td>
+                            <td valign="top" class="name">I/E:</td>
+                            <td valign="top" class="value"><g:checkBox name="ingreso" value="true"/></td>
+                            <td valign="top" class="name">Cantidad</td>
+                            <td valign="top" class="value"><g:field name='cantidad' min="0" value='' type='number'/></td>
+                        </tr>
+
+                        <g:link class="btn-guardar btn btn-info" action="index">${message(code: 'default.button.cancel.label', default: 'Cancelar')}</g:link>                        
+                        <input class="btn-guardar btn btn-success" type="submit" value="${message(code: 'default.button.save.label', default: 'Guardar')}" />
+                    </fieldset>
+                    </table>
+                </g:form>
+        </div>
+    </div>
+        <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+        </g:if>
         </div>
     </body>
 </html>

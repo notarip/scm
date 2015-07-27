@@ -5,6 +5,7 @@ class CuentaCorrienteProducto {
 	Producto producto
 	Boolean ingreso
 	String origen
+    ProyectoFabricacion proyecto
 	OrdenFabricacion orden
 	PuntoFabricacion punto
 	Integer cantidad
@@ -22,6 +23,7 @@ class CuentaCorrienteProducto {
     		orden nullable:true
     		punto nullable:true
             fecha nullable:true
+            proyecto nullable:true
     }
 
 

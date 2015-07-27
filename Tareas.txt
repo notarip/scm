@@ -10,7 +10,7 @@ Tareas
 
 @Comportamiento
 
-- agregar spck para la creacion del proyecto
+- agregar spock para la creacion del proyecto
 - Serguir con el controler y el servicio para crear proyectos de fabricacion
 - internacionalizacion
 - Manejar el error cuando se quiere eliminar un producto que esta como material de otro, ok

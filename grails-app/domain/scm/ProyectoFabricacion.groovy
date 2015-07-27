@@ -3,6 +3,7 @@ package scm
 class ProyectoFabricacion {
 
 
+	String nombre
 	Producto producto
 	Integer cantidad
 	Date fecha

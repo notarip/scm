@@ -6,9 +6,10 @@ import grails.transaction.Transactional
 
 class ProyectoCmd{
     Integer id
+    String nombre
     Integer idProducto
     Integer cantidad
-    Date fecha
+    String fecha
 }
 
 
@@ -21,7 +22,16 @@ class ProyectoFabricacionController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ProyectoFabricacion.list(params), model:[proyectoFabricacionCount: ProyectoFabricacion.count()]
+        params.sort = "fecha"
+        params.order = "desc"
+
+        def proyectoFabricacionList = ProyectoFabricacion.createCriteria().list (params) {
+            if ( params.query ) {
+                ilike("nombre", "%${params.query}%")
+          }
+        }
+
+        model:[proyectoFabricacionList:proyectoFabricacionList,proyectoFabricacionCount: ProyectoFabricacion.count()]
     }
 
     def show(ProyectoFabricacion proyectoFabricacion) {
@@ -29,13 +39,16 @@ class ProyectoFabricacionController {
     }
 
     def create() {
-        respond new ProyectoFabricacion(params)
+
+        def productos = proyectoFabricacionService.obtenerProductosFabricables()
+
+        model:[productos:productos]
     }
 
     @Transactional
     def save(ProyectoCmd proyectoCmd) {
 
-        ProyectoFabricacion proyectoFabricacion = ProyectoFabricacion.get(proyectoCmd.id)
+        ProyectoFabricacion proyectoFabricacion = proyectoFabricacionService.crearProyecto(proyectoCmd)
 
         if (proyectoFabricacion == null) {
             transactionStatus.setRollbackOnly()
@@ -48,8 +61,6 @@ class ProyectoFabricacionController {
             respond proyectoFabricacion.errors, view:'create'
             return
         }
-
-        proyectoFabricacionService.crearProyecto(proyectoFabricacion, proyectoCmd)
 
         proyectoFabricacion.save flush:true
 

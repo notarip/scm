@@ -43,6 +43,21 @@ class ProductoService {
         return cantidad
     }
 
+    def obtenerProductosFabricables(){
+
+        List<Producto> productos = new ArrayList<Producto>()
+
+        Producto.findAll().each{ producto ->
+
+            if(!producto.esPrimario())
+                productos.add(producto)
+
+        }
+
+        return productos
+
+    }
+
 
     def actualizarProducto(Producto producto, def productoCmd){
 

@@ -10,6 +10,7 @@ Tareas
 
 @Comportamiento
 
+- en el analisis de productos unidicar los productos
 - agregar spock para la creacion del proyecto
 - Serguir con el controler y el servicio para crear proyectos de fabricacion
 - internacionalizacion

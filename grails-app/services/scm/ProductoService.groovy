@@ -7,42 +7,63 @@ class ProductoService {
 
     def cantidadFinales(){
 
-        def list = Producto.findAll();
-        def cantidad = 0    
-
-        list.each{ producto ->
-            if(producto.esFinal()){
-                cantidad++
-            }
-        }
-
-        return cantidad;
+        return obtenerFinales().size();
     }
 
     def cantidadPrimarios(){
 
-        def list = Producto.findAll()
-        def cantidad = 0 
-        list.each{ producto ->
-            if (producto.esPrimario()){
-                cantidad++
-            }
-        }
-        return cantidad
+        return obtenerPrimarios().size();
     }
 
     def cantidadSecundarios(){
 
-        def list = Producto.findAll()
-        def cantidad = 0 
-        list.each{ producto ->
-            if (producto.esSecundario()){
-                cantidad++
-            }
-        }
-        return cantidad
+        return obtenerSecundarios().size();
     }
 
+    
+    def obtenerFinales(){
+
+        def list = Producto.findAll();
+        List<Producto> finales = new ArrayList<Producto>();
+
+        list.each{ producto ->
+            if(producto.esFinal()){
+                finales.add(producto)
+            }
+        }
+
+        return finales;
+    }
+
+    def obtenerPrimarios(){
+
+        def list = Producto.findAll();
+        List<Producto> primarios = new ArrayList<Producto>();
+
+        list.each{ producto ->
+            if(producto.esPrimario()){
+                primarios.add(producto)
+            }
+        }
+
+        return primarios;
+    }
+
+    def obtenerSecundarios(){
+
+        def list = Producto.findAll();
+        List<Producto> secundarios = new ArrayList<Producto>();
+
+        list.each{ producto ->
+            if(producto.esPrimario()){
+                secundarios.add(producto)
+            }
+        }
+
+        return secundarios;
+    }    
+
+    
     def obtenerProductosFabricables(){
 
         List<Producto> productos = new ArrayList<Producto>()

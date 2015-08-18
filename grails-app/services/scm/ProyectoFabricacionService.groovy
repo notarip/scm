@@ -20,6 +20,13 @@ class ProductoDTO{
     Producto producto
     Long cantidad
 
+    @Override 
+    public boolean equals(Object o) {    
+
+        return this.producto.equals(o.producto);
+
+    }
+
 }
 
 @ToString(includeNames=true)
@@ -65,35 +72,9 @@ class ProyectoFabricacionService {
 
         ProyectoFabricacion proyecto = new ProyectoFabricacion(nombre:proyectoCmd.nombre, producto:producto, cantidad:proyectoCmd.cantidad,fecha:fecha)
 
-/*
-        - Se  analiza que productos (secundarios, finales) no se pueden cubrir, basado en la cuenta corriente de productos.
-        - Se analiza que puntos de son mas convenientes para la fabricación priorizando según la disponibilidad, los internos y la experiencia (cuántas ordenes de fabricación haya completado) 
-        - Se crean los pedidos de cotización por esos productos para los puntos de fabricación seleccionados.
-
-*/
-
-        /*
-            1- Armar una lista de los productos finales que faltan
-            2- Armar una lista de los productos secundarios que faltan
-            3- Armar una lista de los productos primarios que faltan
-        */
-
-        /*
-        disparar el bloqueo de productos
-        productos.dispo.finales
-        productos.dispo.secundarios
-        productos.dispo.primarios
-
-        disparar los pedidos
-        productos.noDispo.finales
-        productos.noDispo.secundarios (pedido de cotizacion)
-        productos.noDispo.primarios   (pedido de producto)     
-        */
         proyecto.save()
         
         analizarProyecto(proyecto)
-
-
 
         //bloquearProductos(proyecto, productos.disponibles);
 
@@ -116,17 +97,20 @@ class ProyectoFabricacionService {
         Producto productoFinal = proyecto.producto
 
         Long cantidad = proyecto.cantidad
-/*
-        Map<Long, ProductoDTO> productosUtilizados = new SetMap<Long, ProductoDTO>()
 
-        analizarArbolProductos(disponibilidad, productoFinal, cantidad)
+        /*En esta pasada leventa los totales de productos que se van a utilizar*/
+        analizarArbolProductos(disponibilidad, productoFinal, cantidad, false)
+
+        //TODO  unificar todo en un Set<ProductoDTO>
 
         println disponibilidad 
-        */
+
 
     }
 
-    def analizarArbolProductos(ProductosDisponibles disponibilidad, Producto producto, Long cantidad){
+    def analizarArbolProductos(ProductosDisponibles disponibilidad, Producto producto, Long cantidad, boolean consultarDisponibilidad){
+
+        Cantidad disponible = analizarDisponibilidad(producto,cantidad, consultarDisponibilidad)
 
         if(producto.esPrimario()){
 
@@ -151,7 +135,7 @@ class ProyectoFabricacionService {
 
                 def cant = material.cantidad * disponible.faltante
                 if(cant != 0)
-                    analizarArbolProductos(disponibilidad, material.producto, cant)
+                    analizarArbolProductos(disponibilidad, material.producto, cant, consultarDisponibilidad)
 
             }
 
@@ -159,9 +143,9 @@ class ProyectoFabricacionService {
 
     }
 
-    Cantidad analizarDisponibilidad(Producto producto, Long cantidad){
+    Cantidad analizarDisponibilidad(Producto producto, Long cantidad, boolean consultar){
 
-        def dispoFinal = cuentaCorrienteProductoService.obtenerDisponibilidad(producto)
+        def dispoFinal = consultar?cuentaCorrienteProductoService.obtenerDisponibilidad(producto):0;
         Cantidad disponible = new Cantidad();
         disponible.disponible = 0
         disponible.faltante = cantidad

@@ -19,7 +19,7 @@ class CuentaCorrienteProducto {
 	   }
 
     static constraints = {
-    		origen inList: ["Orden", "Stock"]
+    		origen inList: ["Proyecto","Orden", "Stock"]
     		orden nullable:true
     		punto nullable:true
             fecha nullable:true

@@ -28,6 +28,24 @@ class CuentaCorrienteProductoService {
 
     }
 
+    def debitarProducto(ProyectoFabricacion proyecto, Producto producto, Long cantidad){
+
+         if (cantidad > 0){
+
+            CuentaCorrienteProducto movimiento = new CuentaCorrienteProducto(
+                producto:producto,
+                origen:"Proyecto",
+                ingreso:false,
+                cantidad:cantidad)
+        
+            
+            movimiento.save()
+
+            movimiento.setProyecto(proyecto)
+        }
+
+    }
+
 	def actualizarMoviemiento(def cmd, CuentaCorrienteProducto movimiento){
 
 		movimiento.setOrden(OrdenFabricacion.get(cmd.orden))

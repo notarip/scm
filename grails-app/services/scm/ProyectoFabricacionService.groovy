@@ -20,13 +20,6 @@ class ProductoDTO{
     Producto producto
     Long cantidad
 
-    @Override 
-    public boolean equals(Object o) {    
-
-        return this.producto.equals(o.producto);
-
-    }
-
 }
 
 @ToString(includeNames=true)
@@ -76,7 +69,6 @@ class ProyectoFabricacionService {
         
         analizarProyecto(proyecto)
 
-        //bloquearProductos(proyecto, productos.disponibles);
 
         //crearPedidosDeCotizacion(proyecto, productos.noDisponibles.secundarios)
 
@@ -98,19 +90,39 @@ class ProyectoFabricacionService {
 
         Long cantidad = proyecto.cantidad
 
-        /*En esta pasada leventa los totales de productos que se van a utilizar*/
-        analizarArbolProductos(disponibilidad, productoFinal, cantidad, false)
+        /*en esta pasada levanta los productos que va a utilizar 
+        * y los va reservando, ver metodo bloquearProducto
+        */
+        analizarArbolProductos(proyecto, disponibilidad, productoFinal, cantidad, true)
 
-        //TODO  unificar todo en un Set<ProductoDTO>
+        HashMap<Producto,Long> map = new HashMap<Producto,Long>();
+        ArrayList<ProductoDTO> todos = new ArrayList<ProductoDTO>();
+        todos.addAll(disponibilidad.noDisponibles.finales)
+        todos.addAll(disponibilidad.noDisponibles.secundarios)
+        todos.addAll(disponibilidad.noDisponibles.primarios)
 
-        println disponibilidad 
+        todos.each{ prod ->
+
+            if(map.containsKey(prod.producto)){
+                map.put(prod.producto, map.get(prod.producto) + prod.cantidad);
+
+            }else{
+                map.put(prod.producto,prod.cantidad)
+            }
+        }
+
+        
+        println map 
 
 
     }
 
-    def analizarArbolProductos(ProductosDisponibles disponibilidad, Producto producto, Long cantidad, boolean consultarDisponibilidad){
+    def analizarArbolProductos(ProyectoFabricacion proyecto, ProductosDisponibles disponibilidad, Producto producto, Long cantidad, boolean consultarDisponibilidad){
 
         Cantidad disponible = analizarDisponibilidad(producto,cantidad, consultarDisponibilidad)
+
+        bloquearProducto(proyecto, producto, disponible.disponible)
+
 
         if(producto.esPrimario()){
 
@@ -135,7 +147,7 @@ class ProyectoFabricacionService {
 
                 def cant = material.cantidad * disponible.faltante
                 if(cant != 0)
-                    analizarArbolProductos(disponibilidad, material.producto, cant, consultarDisponibilidad)
+                    analizarArbolProductos(proyecto,disponibilidad, material.producto, cant, consultarDisponibilidad)
 
             }
 
@@ -166,6 +178,14 @@ class ProyectoFabricacionService {
         }
 
         return disponible
+
+    }
+
+    def bloquearProducto(ProyectoFabricacion proyecto, Producto producto, Long disponible){
+
+        //TODO lo que falta aca es bloquear los productos asociando el movimiento
+        //a la orden, como no tenemos la orden aun hay que ver como se puede identificar
+        cuentaCorrienteProductoService.debitarProducto(proyecto, producto, disponible)
 
     }
 

@@ -45,6 +45,7 @@ class ProyectoFabricacionService {
 
     ProductoService productoService 
     CuentaCorrienteProductoService cuentaCorrienteProductoService
+    PedidoProductoService pedidoProductoService
 
     def serviceMethod() {
 
@@ -95,11 +96,22 @@ class ProyectoFabricacionService {
         */
         analizarArbolProductos(proyecto, disponibilidad, productoFinal, cantidad, true)
 
+        HashMap<Producto,Long> faltantes = unificarProductos(proyecto, disponibilidad.noDisponibles)
+
+        crearPedidosProductos(proyecto, faltantes)
+
+        println faltantes 
+
+    }
+
+    def HashMap<Producto, Long> unificarProductos(ProyectoFabricacion proyecto, Disponible faltantes){
+
         HashMap<Producto,Long> map = new HashMap<Producto,Long>();
         ArrayList<ProductoDTO> todos = new ArrayList<ProductoDTO>();
-        todos.addAll(disponibilidad.noDisponibles.finales)
-        todos.addAll(disponibilidad.noDisponibles.secundarios)
-        todos.addAll(disponibilidad.noDisponibles.primarios)
+
+        //todos.addAll(faltantes.finales)
+        //todos.addAll(faltantes.secundarios)
+        todos.addAll(faltantes.primarios)
 
         todos.each{ prod ->
 
@@ -112,8 +124,7 @@ class ProyectoFabricacionService {
         }
 
         
-        println map 
-
+        return map
 
     }
 
@@ -183,13 +194,19 @@ class ProyectoFabricacionService {
 
     def bloquearProducto(ProyectoFabricacion proyecto, Producto producto, Long disponible){
 
-        //TODO lo que falta aca es bloquear los productos asociando el movimiento
-        //a la orden, como no tenemos la orden aun hay que ver como se puede identificar
         cuentaCorrienteProductoService.debitarProducto(proyecto, producto, disponible)
 
     }
 
-    def crearPedidosDeProductos(ProyectoFabricacion proyecto, List<ProductoDTO> productos){
+    def crearPedidosProductos(ProyectoFabricacion proyecto, HashMap<Producto, Long> productos){
+
+        for(Producto producto: productos.keySet()) {
+            
+            Long cantidad = productos.get(producto)
+
+            pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)
+
+        }
 
 
     }

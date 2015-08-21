@@ -5,12 +5,13 @@ Tareas
 @Look & Feel
 
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
-- Acomodar los estilos en el agregado de materiales, ok
 
 
 @Comportamiento
 
-- en el analisis de productos unidicar los productos
+- asignar los recursos segun el orden de fabricacion que tenga el producto
+- probar con crear un proyecto chico para validar las cantidades
+- en la vista del proyecto agregar los productos bloqueados y los pedidos generados
 - agregar spock para la creacion del proyecto
 - Serguir con el controler y el servicio para crear proyectos de fabricacion
 - internacionalizacion

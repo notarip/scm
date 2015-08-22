@@ -1,5 +1,6 @@
 package scm
 
+
 class ProyectoFabricacion {
 
 
@@ -10,7 +11,7 @@ class ProyectoFabricacion {
 	List<OrdenFabricacion> ordenes = new ArrayList();
 	List<PedidoProducto> pedidosProductos = new ArrayList();
 	List<PedidoCotizacion> pedidosCotizacion = new ArrayList();
-	
+
 
 	static hasMany = [ordenes: OrdenFabricacion, pedidosProductos:PedidoProducto, pedidosCotizacion:PedidoCotizacion]
 
@@ -20,8 +21,11 @@ class ProyectoFabricacion {
     	pedidosCotizacion nullable:true
     }
 
-    
 
-    
+	@Override
+	public String toString(){
+		return "${nombre}";
+	}    
+
 
 }

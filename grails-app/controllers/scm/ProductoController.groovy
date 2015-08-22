@@ -40,13 +40,13 @@ class ProductoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
- 
+
         def productoList = Producto.createCriteria().list (params) {
             if ( params.query ) {
                 ilike("nombre", "%${params.query}%")
             }
         }
- 
+
 
         [productoList: productoList, productoCount: Producto.count()]
     }
@@ -66,7 +66,7 @@ class ProductoController {
 
         productoService.actualizarMateriales(producto, productoCmd)
 
-        
+
         if (producto == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -111,7 +111,7 @@ class ProductoController {
             return
         }
 
-        
+
         productoService.actualizarProducto(producto, productoCmd)
 
         producto.save flush:true

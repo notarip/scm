@@ -43,7 +43,7 @@ class ProductosDisponibles{
 @Transactional
 class ProyectoFabricacionService {
 
-    ProductoService productoService 
+    ProductoService productoService
     CuentaCorrienteProductoService cuentaCorrienteProductoService
     PedidoProductoService pedidoProductoService
 
@@ -56,18 +56,18 @@ class ProyectoFabricacionService {
 		return productoService.obtenerProductosFabricables()
 
 	}
-    
+
 
     def crearProyecto(def proyectoCmd){
 
         Producto producto = Producto.get(proyectoCmd.idProducto)
-        
+
         Date fecha = Date.parse('dd/MM/yyyy', proyectoCmd.fecha)
 
         ProyectoFabricacion proyecto = new ProyectoFabricacion(nombre:proyectoCmd.nombre, producto:producto, cantidad:proyectoCmd.cantidad,fecha:fecha)
 
         proyecto.save()
-        
+
         analizarProyecto(proyecto)
 
 
@@ -91,7 +91,7 @@ class ProyectoFabricacionService {
 
         Long cantidad = proyecto.cantidad
 
-        /*en esta pasada levanta los productos que va a utilizar 
+        /*en esta pasada levanta los productos que va a utilizar
         * y los va reservando, ver metodo bloquearProducto
         */
         analizarArbolProductos(proyecto, disponibilidad, productoFinal, cantidad, true)
@@ -100,7 +100,7 @@ class ProyectoFabricacionService {
 
         crearPedidosProductos(proyecto, faltantes)
 
-        println faltantes 
+        println faltantes
 
     }
 
@@ -115,15 +115,17 @@ class ProyectoFabricacionService {
 
         todos.each{ prod ->
 
-            if(map.containsKey(prod.producto)){
-                map.put(prod.producto, map.get(prod.producto) + prod.cantidad);
+            if(prod.cantidad > 0){
+              if(map.containsKey(prod.producto)){
+                  map.put(prod.producto, map.get(prod.producto) + prod.cantidad);
 
-            }else{
-                map.put(prod.producto,prod.cantidad)
+              }else{
+                  map.put(prod.producto,prod.cantidad)
+              }
             }
         }
 
-        
+
         return map
 
     }
@@ -138,22 +140,22 @@ class ProyectoFabricacionService {
         if(producto.esPrimario()){
 
             disponibilidad.disponibles.primarios.add(new ProductoDTO(producto: producto,cantidad:disponible.disponible))
-            disponibilidad.noDisponibles.primarios.add(new ProductoDTO(producto: producto,cantidad:disponible.faltante))            
+            disponibilidad.noDisponibles.primarios.add(new ProductoDTO(producto: producto,cantidad:disponible.faltante))
 
         }else{
 
             if(producto.esFinal()){
-        
+
                 disponibilidad.disponibles.finales.add(new ProductoDTO(producto: producto,cantidad:disponible.disponible))
-                disponibilidad.noDisponibles.finales.add(new ProductoDTO(producto: producto,cantidad:disponible.faltante))            
+                disponibilidad.noDisponibles.finales.add(new ProductoDTO(producto: producto,cantidad:disponible.faltante))
 
             }else{
 
                 disponibilidad.disponibles.secundarios.add(new ProductoDTO(producto: producto,cantidad:disponible.disponible))
-                disponibilidad.noDisponibles.secundarios.add(new ProductoDTO(producto: producto,cantidad:disponible.faltante))            
+                disponibilidad.noDisponibles.secundarios.add(new ProductoDTO(producto: producto,cantidad:disponible.faltante))
 
             }
-            
+
             producto.materiales.each{ material ->
 
                 def cant = material.cantidad * disponible.faltante
@@ -175,9 +177,9 @@ class ProyectoFabricacionService {
 
 
         if(dispoFinal > 0){
-        
+
             if(dispoFinal < cantidad){
-                
+
                 disponible.disponible = dispoFinal
                 disponible.faltante = cantidad - dispoFinal
 
@@ -185,6 +187,7 @@ class ProyectoFabricacionService {
             }else{
 
                 disponible.disponible = cantidad
+                disponible.faltante = 0
             }
         }
 
@@ -201,7 +204,7 @@ class ProyectoFabricacionService {
     def crearPedidosProductos(ProyectoFabricacion proyecto, HashMap<Producto, Long> productos){
 
         for(Producto producto: productos.keySet()) {
-            
+
             Long cantidad = productos.get(producto)
 
             pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)

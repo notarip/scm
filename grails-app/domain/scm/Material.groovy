@@ -5,7 +5,7 @@ class Material {
 	Producto productoPadre;
 	Producto producto;
 	Integer cantidad;
-    EtapaFabricacion etapaFabricacion
+  EtapaFabricacion etapaFabricacion
 	boolean _deleted;
 
 	static transients = [ '_deleted' ]

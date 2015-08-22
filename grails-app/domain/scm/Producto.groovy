@@ -16,7 +16,7 @@ class Producto {
     static mapping = {
 		materiales cascade:"all,delete-orphan"
 	}
-    
+
 
     def borrarMaterial(def idMaterial){
 
@@ -61,7 +61,7 @@ class Producto {
         }else{
             return "Final"
         }
-       
+
     }
 
     @Override
@@ -74,10 +74,10 @@ class Producto {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + id; 
+        result = prime * result + id;
         return result;
     }
- 
+/*
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -91,5 +91,5 @@ class Producto {
             return false;
         return true;
     }
-
+*/
 }

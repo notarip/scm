@@ -2,27 +2,85 @@ package scm
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import groovy.transform.ToString
+
+@ToString(includeNames=true)
+class PedidoCmd {
+    Integer id
+    Integer producto
+    Integer cantidad
+}
+
 
 @Transactional(readOnly = true)
 class PedidoProductoController {
+
+    PedidoProductoService pedidoProductoService
+    ProductoService productoService
+    CuentaCorrienteProductoService cuentaCorrienteProductoService
+
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond PedidoProducto.list(params), model:[pedidoProductoCount: PedidoProducto.count()]
+        params.sort = "fecha"
+        params.order = "desc"
+
+        def pedidoProductoList = PedidoProducto.createCriteria().list (params) {
+            if ( params.query ) {
+                ilike("producto.nombre", "%${params.query}%")
+            }
+        }
+
+        [pedidoProductoList:pedidoProductoList, pedidoProductoCount: PedidoProducto.count()]
     }
 
     def show(PedidoProducto pedidoProducto) {
         respond pedidoProducto
     }
 
+    @Transactional
+    def close(PedidoProducto pedidoProducto) {
+
+        /*TODO cuando redirecciona al index no actualiza la fecha*/
+        def msgcode = "default.updated.message"
+
+        if(!pedidoProducto.fechaCierre){
+
+          CuentaCorrienteProducto mov = cuentaCorrienteProductoService.crearMovimiento(pedidoProducto.producto, pedidoProducto.cantidad, pedidoProducto.proyecto)
+
+          pedidoProducto.cerrarPedido()
+          pedidoProducto.setMovimiento(mov)
+          pedidoProducto.save flush:true
+
+
+       }else{
+         msgcode = "default.not.updated.message"
+       }
+
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: msgcode, args: [message(code: 'pedidoProducto.label', default: 'PedidoProducto'), pedidoProducto.id])
+                redirect action:"index"
+            }
+
+        }
+    }
+
     def create() {
-        respond new PedidoProducto(params)
+        def productos = productoService.obtenerPrimarios()
+
+
+        respond new PedidoProducto(params), model:[productos:productos]
     }
 
     @Transactional
-    def save(PedidoProducto pedidoProducto) {
+    def save(PedidoCmd pedido) {
+
+        PedidoProducto pedidoProducto = pedidoProductoService.crearPedido(pedido)
+
         if (pedidoProducto == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -40,9 +98,9 @@ class PedidoProductoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'pedidoProducto.label', default: 'PedidoProducto'), pedidoProducto.id])
-                redirect pedidoProducto
+                redirect action:"index", method:"GET"
             }
-            '*' { respond pedidoProducto, [status: CREATED] }
+            '*' { render status: CREATED }
         }
     }
 

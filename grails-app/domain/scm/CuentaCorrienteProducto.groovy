@@ -5,7 +5,7 @@ class CuentaCorrienteProducto {
 	Producto producto
 	Boolean ingreso
 	String origen
-    ProyectoFabricacion proyecto
+  ProyectoFabricacion proyecto
 	OrdenFabricacion orden
 	PuntoFabricacion punto
 	Integer cantidad
@@ -22,8 +22,8 @@ class CuentaCorrienteProducto {
     		origen inList: ["Proyecto","Orden", "Stock"]
     		orden nullable:true
     		punto nullable:true
-            fecha nullable:true
-            proyecto nullable:true
+        fecha nullable:true
+        proyecto nullable:true
     }
 
 

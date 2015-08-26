@@ -57,31 +57,31 @@ class ProyectoFabricacionService {
 
 	}
 
+  @Transactional
+  def crearProyecto(def proyectoCmd){
 
-    def crearProyecto(def proyectoCmd){
+      Producto producto = Producto.get(proyectoCmd.idProducto)
 
-        Producto producto = Producto.get(proyectoCmd.idProducto)
+      Date fecha = Date.parse('dd/MM/yyyy', proyectoCmd.fecha)
 
-        Date fecha = Date.parse('dd/MM/yyyy', proyectoCmd.fecha)
+      ProyectoFabricacion proyecto = new ProyectoFabricacion(nombre:proyectoCmd.nombre, producto:producto, cantidad:proyectoCmd.cantidad,fecha:fecha)
 
-        ProyectoFabricacion proyecto = new ProyectoFabricacion(nombre:proyectoCmd.nombre, producto:producto, cantidad:proyectoCmd.cantidad,fecha:fecha)
+      proyecto.save()
 
-        proyecto.save()
-
-        analizarProyecto(proyecto)
-
-
-        //crearPedidosDeCotizacion(proyecto, productos.noDisponibles.secundarios)
-
-        //crearPedidosDeProductos(proyecto, productos.noDisponibles.primarios)
+      analizarProyecto(proyecto)
 
 
+      //crearPedidosDeCotizacion(proyecto, productos.noDisponibles.secundarios)
 
-        proyecto.save()
+      //crearPedidosDeProductos(proyecto, productos.noDisponibles.primarios)
 
-        return proyecto
 
-    }
+
+      proyecto.save()
+
+      return proyecto
+
+  }
 
     def analizarProyecto(ProyectoFabricacion proyecto){
 
@@ -97,6 +97,8 @@ class ProyectoFabricacionService {
         analizarArbolProductos(proyecto, disponibilidad, productoFinal, cantidad, true)
 
         HashMap<Producto,Long> faltantes = unificarProductos(proyecto, disponibilidad.noDisponibles)
+
+        println proyecto
 
         crearPedidosProductos(proyecto, faltantes)
 
@@ -207,7 +209,9 @@ class ProyectoFabricacionService {
 
             Long cantidad = productos.get(producto)
 
-            pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)
+            PedidoProducto pedido = pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)
+
+            println "pedido ${pedido}"
 
         }
 

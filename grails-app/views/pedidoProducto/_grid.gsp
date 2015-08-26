@@ -4,25 +4,28 @@
               <tr>
                 <th>#</th>
                 <th>Producto</th>
-                <th>Origen</th>
-                <th>Proyecto</th>
-                <th>Orden</th>
-                <th>Punto</th>
                 <th>Cantidad</th>
+                <th>Proyecto</th>
                 <th>Fecha</th>
+                <th>Fecha Cierre</th>
+                <th>Movimento</th>
               </tr>
             </thead>
             <tbody>
-            <g:each in="${cuentaCorrienteProductoList}">
+            <g:each in="${pedidoProductoList}">
             <tr>
                 <td>${it.id}</td>
-                <td><g:link action="show" id="${it.producto.id}">${it.producto}</g:link></td>
-                <td>${it.origen}</td>
+                <td><g:link controller="Producto" action="show" id="${it.producto.id}">${it.producto}</g:link></td>
+                <td>${it.cantidad}</td>
                 <td><g:link controller="ProyectoFabricacion" action="show" id="${it.proyecto?.id}">${it.proyecto}</g:link></td>
-                <td><g:link controller="OrdenFabricacion" action="show" id="${it.orden?.id}">${it.orden?.id}</g:link></td>
-                <td><g:link controller="PuntoFabricacion" action="show" id="${it.punto?.id}">${it.punto?.id}</g:link></td>
-                <td>${it.getCantidadConSigno()}</td>
                 <td>${it.fecha}</td>
+                <td>${it.fechaCierre}</td>
+                <td><g:link controller="CuentaCorrienteProducto" action="show" id="${it.producto.id}">${it.movimiento?.id}</g:link></td>
+                <td colspan="2">
+                  <fieldset class="buttons">
+                      <g:link class="btn-actualizar btn btn-warning" action="close" resource="${it}"><g:message code="default.button.close.label" default="Cerrar" /></g:link>
+                  </fieldset>
+                </td>
             </tr>
             </g:each>
             </tbody>

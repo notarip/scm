@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'pedidoProducto.label', default: 'PedidoProducto')}" />
+        <meta name="layout" content="header"/>
+        <g:set var="entityName" value="${message(code: 'pedidoProducto.label', default: 'pedidoProducto')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#list-pedidoProducto" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
-        <div id="list-pedidoProducto" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:table collection="${pedidoProductoList}" />
 
-            <div class="pagination">
-                <g:paginate total="${pedidoProductoCount ?: 0}" />
-            </div>
+        <div class="container" role="navigation">
+        <div class="crud-table panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Pedidos de Productos</h4>
+        </div>
+        <div class="cabecera-grilla jumbotron">
+        <table>
+        <tr>
+        <td>
+        <div>
+            <g:link class="btn-alta btn btn-success" action="create">+ Pedido</g:link>
+        </div>
+        </td>
+        <td>
+            <fieldset class="form">
+                <g:form action="index" method="GET">
+                <div class="fieldcontain">
+                <label for="query">Buscar:</label>
+                <g:textField placeholder="Ej. Remera" name="query" value="${params.query}"/>
+                </div>
+                </g:form>
+            </fieldset>
+        </td>
+        </tr>
+        </div>
+        </table>
+
+            <g:render template="grid" model="['pedidoProductoList':pedidoProductoList]"/>
+
+          </div>
         </div>
     </body>
 </html>

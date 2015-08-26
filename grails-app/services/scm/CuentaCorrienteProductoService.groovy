@@ -13,13 +13,13 @@ class CuentaCorrienteProductoService {
     def crearMovimiento(def cmd){
 
         def producto = Producto.get(cmd.producto)
-        
+
         CuentaCorrienteProducto movimiento = new CuentaCorrienteProducto(
             producto:producto,
             origen:cmd.origen,
             ingreso:cmd.ingreso,
             cantidad:cmd.cantidad)
-    
+
         movimiento.save()
 
         actualizarMoviemiento(cmd, movimiento)
@@ -27,6 +27,27 @@ class CuentaCorrienteProductoService {
         return movimiento
 
     }
+
+    def crearMovimiento(Producto producto, Integer cantidad, ProyectoFabricacion proyecto){
+
+
+        CuentaCorrienteProducto movimiento = new CuentaCorrienteProducto(
+            producto:producto,
+            origen:"Stock",
+            cantidad:cantidad,
+            ingreso:true)
+
+        if(proyecto){
+          movimiento.setProyecto(proyecto)
+          movimiento.setOrigen("Proyecto")
+        }
+
+        movimiento.save()
+
+        return movimiento
+
+    }
+
 
     def debitarProducto(ProyectoFabricacion proyecto, Producto producto, Long cantidad){
 
@@ -37,8 +58,8 @@ class CuentaCorrienteProductoService {
                 origen:"Proyecto",
                 ingreso:false,
                 cantidad:cantidad)
-        
-            
+
+
             movimiento.save()
 
             movimiento.setProyecto(proyecto)

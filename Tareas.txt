@@ -4,13 +4,16 @@ Tareas
 
 @Look & Feel
 
-- vista del proyecto 
 - vista de los pedidos de productos
+- vista del proyecto
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
 
 
 @Comportamiento
 
+- desde la vista del pedido disparar la creacion de un movimiento en la CC de productos que quede enganchado con el proyecto
+que disparo el pedido de productos
+- pasar la obtencion de productos a la clase de proyectos
 - asignar los recursos segun el orden de fabricacion que tenga el producto
 - en la vista del proyecto agregar los productos bloqueados y los pedidos generados
 - agregar spock para la creacion del proyecto
@@ -20,13 +23,15 @@ Tareas
 - Agregar botones de cancelar a las ediciones, ok
 
 
+
+
 - Pedido de Cotizacion:
 queda asignado a un taller de modo de despues se pueda poner en la bandeja del jefe de ese taller
 
 - orden de fabricacion:
 queda asignado a un taller de modo de despues se pueda poner en la bandeja del jefe de ese taller
 
-- Pedido de productos: 
+- Pedido de productos:
 no queda asignado a nadie, es una vista del jefe de suministros
 
 
@@ -34,7 +39,7 @@ no queda asignado a nadie, es una vista del jefe de suministros
 -------
 Entidades:
 
-*Producto: Producto final o elemento utilizado para la confección del mismo. 
+*Producto: Producto final o elemento utilizado para la confección del mismo.
 
 *Etapa de Fabricación: Cada una de las etapas de fabricación, por ejemplo: “Corte de puños”, “Costura de puños”, “Pegado de botones”. La confección de cada artículo esta relacionado con varias o ninguna etapa de el fabricación.
 

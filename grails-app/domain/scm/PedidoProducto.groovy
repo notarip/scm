@@ -2,12 +2,12 @@ package scm
 
 class PedidoProducto {
 
-	ProyectoFabricacion proyecto
 	Producto producto
 	Integer cantidad
 	Date fecha
 	Date fechaCierre
 	CuentaCorrienteProducto movimiento
+	ProyectoFabricacion proyecto
 
     static constraints = {
 
@@ -18,10 +18,10 @@ class PedidoProducto {
 
     }
 
-    def beforeInsert() {
-	    if (!fecha) {
-	       fecha = new Date()
-	    }
+  def beforeInsert() {
+		if (!fecha) {
+		   fecha = new Date()
+		}
 	}
 
 	def cerrarPedido(){
@@ -34,7 +34,4 @@ class PedidoProducto {
 	public String toString(){
 		return "${producto} - ${cantidad} - ${proyecto}";
 	}
-
-
-
 }

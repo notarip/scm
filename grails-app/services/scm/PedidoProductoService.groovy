@@ -24,9 +24,7 @@ class PedidoProductoService {
     	PedidoProducto pedido = new PedidoProducto(producto:producto,cantidad:cantidad).save()
 
       if(proyecto){
-        println "seteando el proyecto ${proyecto} en el pedido ${pedido}"
         pedido.setProyecto(proyecto)
-        pedido.save()
       }
 
       return pedido

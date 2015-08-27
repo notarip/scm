@@ -9,7 +9,6 @@ class CuentaCorrienteProductoService {
 
     }
 
-
     def crearMovimiento(def cmd){
 
         def producto = Producto.get(cmd.producto)
@@ -28,44 +27,46 @@ class CuentaCorrienteProductoService {
 
     }
 
-    def crearMovimiento(Producto producto, Integer cantidad, ProyectoFabricacion proyecto){
+    def crearMovimiento(Producto producto, Long cantidad, ProyectoFabricacion proyecto, Boolean ingreso){
+
+        //TODO-SCM revisar aca no esta guardando el movimiento con signo negativo
+        if(!ingreso)
+          cantidad = cantidad*-1
 
 
         CuentaCorrienteProducto movimiento = new CuentaCorrienteProducto(
             producto:producto,
             origen:"Stock",
             cantidad:cantidad,
-            ingreso:true)
+            ingreso:ingreso)
 
         if(proyecto){
           movimiento.setProyecto(proyecto)
           movimiento.setOrigen("Proyecto")
         }
 
-        movimiento.save()
-
         return movimiento
 
     }
 
 
-    def debitarProducto(ProyectoFabricacion proyecto, Producto producto, Long cantidad){
+  def debitarProducto(ProyectoFabricacion proyecto, Producto producto, Long cantidad){
 
-         if (cantidad > 0){
+       if (cantidad > 0){
 
-            CuentaCorrienteProducto movimiento = new CuentaCorrienteProducto(
-                producto:producto,
-                origen:"Proyecto",
-                ingreso:false,
-                cantidad:cantidad)
+          CuentaCorrienteProducto movimiento = new CuentaCorrienteProducto(
+              producto:producto,
+              origen:"Proyecto",
+              ingreso:false,
+              cantidad:cantidad)
 
+          movimiento.setProyecto(proyecto)
 
-            movimiento.save()
+          movimiento.save()
 
-            movimiento.setProyecto(proyecto)
-        }
+      }
 
-    }
+  }
 
 	def actualizarMoviemiento(def cmd, CuentaCorrienteProducto movimiento){
 
@@ -74,35 +75,35 @@ class CuentaCorrienteProductoService {
 
 	}
 
-    def obtenerDisponibilidad(Producto producto){
+  def obtenerDisponibilidad(Producto producto){
 
-    	log.info "${producto}"
+  	log.info "${producto}"
 
-    	def ccprod =  CuentaCorrienteProducto.findAll("from CuentaCorrienteProducto as ccp where ccp.producto = ?",
-                         [producto])
+  	def ccprod =  CuentaCorrienteProducto.findAll("from CuentaCorrienteProducto as ccp where ccp.producto = ?",
+                       [producto])
 
-    	def disponible =0
+  	def disponible =0
 
-    	ccprod.each{ mov ->
+  	ccprod.each{ mov ->
 
-    		if(mov.ingreso)
-    			disponible += mov.cantidad
-    		else
-    			disponible -= mov.cantidad
-    	}
+  		if(mov.ingreso)
+  			disponible += mov.cantidad
+  		else
+  			disponible -= mov.cantidad
+  	}
 
-    	log.info disponible
+  	log.info disponible
 
-    	return disponible
-    }
+  	return disponible
+  }
 
-    def obtenerMovimientos(Producto producto){
+  def obtenerMovimientos(Producto producto){
 
-        def movimientos =  CuentaCorrienteProducto.findAll("from CuentaCorrienteProducto as ccp where ccp.producto = ?  order by ccp.fecha desc",[producto])
+      def movimientos =  CuentaCorrienteProducto.findAll("from CuentaCorrienteProducto as ccp where ccp.producto = ?  order by ccp.fecha desc",[producto])
 
-        return movimientos
+      return movimientos
 
-    }
+  }
 
 
 }

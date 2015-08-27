@@ -43,17 +43,20 @@ class PedidoProductoController {
     @Transactional
     def close(PedidoProducto pedidoProducto) {
 
-        /*TODO cuando redirecciona al index no actualiza la fecha*/
         def msgcode = "default.updated.message"
 
         if(!pedidoProducto.fechaCierre){
 
-          CuentaCorrienteProducto mov = cuentaCorrienteProductoService.crearMovimiento(pedidoProducto.producto, pedidoProducto.cantidad, pedidoProducto.proyecto)
+          CuentaCorrienteProducto movIngreso = cuentaCorrienteProductoService.crearMovimiento(pedidoProducto.producto, pedidoProducto.cantidad, pedidoProducto.proyecto, true)
 
+          movIngreso.save()
           pedidoProducto.cerrarPedido()
-          pedidoProducto.setMovimiento(mov)
-          pedidoProducto.save flush:true
+          pedidoProducto.setMovimiento(movIngreso)
+          pedidoProducto.save()
 
+
+          CuentaCorrienteProducto movEgreso = cuentaCorrienteProductoService.crearMovimiento(pedidoProducto.producto, pedidoProducto.cantidad, pedidoProducto.proyecto, false)
+          movEgreso.save()
 
        }else{
          msgcode = "default.not.updated.message"

@@ -61,8 +61,12 @@ class ProyectoFabricacionService {
   def crearProyecto(def proyectoCmd){
 
       Producto producto = Producto.get(proyectoCmd.idProducto)
+      Date fecha = null
 
-      Date fecha = Date.parse('dd/MM/yyyy', proyectoCmd.fecha)
+      if(proyectoCmd.fecha)
+        fecha = Date.parse('dd/MM/yyyy', proyectoCmd.fecha)
+      else
+        fecha = new Date()
 
       ProyectoFabricacion proyecto = new ProyectoFabricacion(nombre:proyectoCmd.nombre, producto:producto, cantidad:proyectoCmd.cantidad,fecha:fecha)
 
@@ -70,17 +74,13 @@ class ProyectoFabricacionService {
 
       analizarProyecto(proyecto)
 
-
       //crearPedidosDeCotizacion(proyecto, productos.noDisponibles.secundarios)
 
       //crearPedidosDeProductos(proyecto, productos.noDisponibles.primarios)
 
-
-
       proyecto.save()
 
       return proyecto
-
   }
 
     def analizarProyecto(ProyectoFabricacion proyecto){
@@ -91,9 +91,6 @@ class ProyectoFabricacionService {
 
         Long cantidad = proyecto.cantidad
 
-        /*en esta pasada levanta los productos que va a utilizar
-        * y los va reservando, ver metodo bloquearProducto
-        */
         analizarArbolProductos(proyecto, disponibilidad, productoFinal, cantidad, true)
 
         HashMap<Producto,Long> faltantes = unificarProductos(proyecto, disponibilidad.noDisponibles)
@@ -205,26 +202,22 @@ class ProyectoFabricacionService {
 
     def crearPedidosProductos(ProyectoFabricacion proyecto, HashMap<Producto, Long> productos){
 
+        PedidoProducto pedido = null
+
         for(Producto producto: productos.keySet()) {
 
             Long cantidad = productos.get(producto)
 
-            PedidoProducto pedido = pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)
+            pedido = pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)
 
-            println "pedido ${pedido}"
+            pedido.save flush:true
 
         }
-
 
     }
 
 
     def crearPedidosDeCotizacion(ProyectoFabricacion proyecto, List<ProductoDTO> productos){
-
-
-    }
-
-    def bloquearProductos(ProyectoFabricacion proyecto, Disponible disponibles){
 
 
     }

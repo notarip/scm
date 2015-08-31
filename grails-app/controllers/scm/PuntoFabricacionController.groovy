@@ -5,13 +5,6 @@ import grails.transaction.Transactional
 import groovy.transform.ToString
 
 
-@ToString(includeNames=true)
-class EtapaCmd {
-   Integer id
-   String nombre
-   boolean _deleted
-}
-
 
 @ToString(includeNames=true)
 class PuntoFabricacionCmd {
@@ -19,7 +12,14 @@ class PuntoFabricacionCmd {
     String nombre
     String observaciones
     Boolean interno
-    List<EtapaCmd> etapas
+    List<CategoriaCmd> categorias
+}
+
+@ToString(includeNames=true)
+class CategoriaCmd {
+   Integer id
+   String nombre
+   boolean _deleted
 }
 
 

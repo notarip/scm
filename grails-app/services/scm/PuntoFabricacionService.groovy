@@ -12,7 +12,7 @@ class PuntoFabricacionService {
     def cantidadInternos(){
 
         def list = PuntoFabricacion.findAll()
-        def cantidad = 0 
+        def cantidad = 0
         list.each{ punto ->
             if (punto.getInterno()){
                 cantidad++
@@ -24,7 +24,7 @@ class PuntoFabricacionService {
     def cantidadExternos(){
 
         def list = PuntoFabricacion.findAll()
-        def cantidad = 0 
+        def cantidad = 0
         list.each{ punto ->
             if (!punto.getInterno()){
                 cantidad++
@@ -33,7 +33,17 @@ class PuntoFabricacionService {
         return cantidad
     }
 
+    def getPuntos(Producto producto){
 
+      def puntos = PuntoFabricacion.withCriteria {
+          categorias {
+          eq('id', producto.categoria.id)
+        }
+      }
+
+      return puntos
+
+    }
 
     def actualizarPuntoFabricacion(PuntoFabricacion punto, def puntoCmd){
 
@@ -42,29 +52,27 @@ class PuntoFabricacionService {
     	punto.setObservaciones(puntoCmd.observaciones)
     	punto.setInterno(puntoCmd.interno)
 
-    	actualizarEtapas(punto, puntoCmd)
+    	actualizarCategorias(punto, puntoCmd)
     }
 
 
-    def actualizarEtapas(PuntoFabricacion punto, def puntoCmd){
+    def actualizarCategorias(PuntoFabricacion punto, def puntoCmd){
 
 
-		def etapasNuevas = puntoCmd.etapas.findAll{ !(it._deleted) }
-        def etapasBorradas = puntoCmd.etapas.findAll{ it._deleted }
-        
-        etapasBorradas.each{ log.info "etapas borradas: ${it}"}
-        etapasBorradas.each{ etapa -> punto.etapas.remove(EtapaFabricacion.get(etapa.id)) }
+		  def categoriasNuevas = puntoCmd.categorias.findAll{ !(it._deleted) }
+      def categoriasBorradas = puntoCmd.categorias.findAll{ it._deleted }
 
-        etapasNuevas.each{etapa -> 
+      categoriasBorradas.each{ categoria -> punto.categorias.remove(Categoria.get(categoria.id)) }
 
-            log.info "etapa nueva: ${etapa}";
-            def e = EtapaFabricacion.get(etapa.id)
+      categoriasNuevas.each{categoria ->
 
-            if(!punto.etapas.contains(e)){
-            	punto.addToEtapas(e);
-            }
+          def e = Categoria.get(categoria.id)
 
-           }
+          if(!punto.categorias.contains(e)){
+          	punto.addToCategorias(e);
+          }
+
+         }
     }
 
 }

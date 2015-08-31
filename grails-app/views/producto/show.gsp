@@ -24,6 +24,10 @@
                             <td valign="top" class="value">${fieldValue(bean:producto, field:'descripcion')}</td>
                         </tr>
                         <tr class="prop">
+                            <td valign="top" class="name">Categoria:</td>
+                            <td valign="top" class="value">${fieldValue(bean:producto, field:'categoria')}</td>
+                        </tr>
+                        <tr class="prop">
                         <td valign="top" class="name">Materiales:</td>
                         <g:if test="${producto.materiales == null || producto.materiales.size() == 0}">
                             <td valign="top" class="value">Sin Materiales</td>

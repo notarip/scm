@@ -1,4 +1,3 @@
-        </div>
         <table class="table table-bordered">
             <thead>
               <tr>
@@ -13,8 +12,8 @@
             <g:each in="${proyectoFabricacionList}">
             <tr>
                 <td>${it.id}</td>
-                <td>${it.nombre}</td>
-                <td><g:link action="show" id="${it.producto.id}">${it.producto}</g:link></td>
+                <td><g:link action="show" id="${it.id}">${it.nombre}</g:link></td>
+                <td><g:link controller="Producto" action="show" id="${it.producto.id}">${it.producto}</g:link></td>
                 <td>${it.cantidad}</td>
                 <td>${it.fecha}</td>
             </tr>

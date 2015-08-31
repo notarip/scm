@@ -26,6 +26,10 @@
                             <td valign="top" class="value"><g:field type="text" name="descripcion" value="${producto?.descripcion}"/></td>
                         </tr>
                         <tr class="prop">
+                            <td valign="top" class="name">Categoria:</td>
+                            <td valign="top" class="value"><g:select name="idCategoria" class='form-control select-material' from="${categorias}" value="" optionKey="id" /></td>
+                        </tr>
+                        <tr class="prop">
                             <td valign="top" class="name">Materiales:</td>
                             <td>
                             <g:render template="materiales" model="['producto':producto]"/>

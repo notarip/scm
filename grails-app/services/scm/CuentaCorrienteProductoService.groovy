@@ -27,11 +27,7 @@ class CuentaCorrienteProductoService {
 
     }
 
-    def crearMovimiento(Producto producto, Long cantidad, ProyectoFabricacion proyecto, Boolean ingreso){
-
-        //TODO-SCM revisar aca no esta guardando el movimiento con signo negativo
-        if(!ingreso)
-          cantidad = cantidad*-1
+    def crearMovimiento(Producto producto, Integer cantidad, ProyectoFabricacion proyecto, Boolean ingreso){
 
 
         CuentaCorrienteProducto movimiento = new CuentaCorrienteProducto(

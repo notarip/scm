@@ -4,17 +4,19 @@ Tareas
 
 @Look & Feel
 
+- Agregar la categoria a los productos y a los puntos de fabricacion
 - revisar los flujos de pantallas, que los volver vuelvan posta (caso cta cte de productos)
-- vista de los pedidos de productos
-- vista del proyecto
+- vista del proyecto !!
 - Probar Drag and Drop para la creacion de un producto (https://jqueryui.com/droppable/#shopping-cart)
-
+- http://getbootstrap.com/javascript/#collapse-example-accordion
+- http://angularscript.com/drag-drop-tree-component-angular-ui-tree/
+- http://jimliu.github.io/angular-ui-tree/
 
 @Comportamiento
 
-- Buscar los TODO y TODO-SCM
-- desde la vista del pedido disparar la creacion de un movimiento en la CC de productos que quede enganchado con el proyecto
-que disparo el pedido de productos
+- 
+- un combo que filtre los pedidos de cotizacion por punto
+- que se armen los pedidos de cotizacion
 - pasar la obtencion de productos (analisis del arbol de productos) a la clase de proyectos
 - asignar los recursos segun el orden de fabricacion que tenga el producto
 - en la vista del proyecto agregar los productos bloqueados y los pedidos generados

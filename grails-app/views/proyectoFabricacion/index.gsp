@@ -33,6 +33,7 @@
         </tr>
         </div>
         </table>
+        </div>
 
             <g:render template="grid" model="['proyectoFabricacionList':proyectoFabricacionList]"/>
 

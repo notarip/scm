@@ -5,7 +5,6 @@ class Material {
 	Producto productoPadre;
 	Producto producto;
 	Integer cantidad;
-  EtapaFabricacion etapaFabricacion
 	boolean _deleted;
 
 	static transients = [ '_deleted' ]
@@ -19,20 +18,17 @@ class Material {
 
     Material(def materialCmd){
 
-        Producto producto = Producto.get(materialCmd.idProducto);
-        EtapaFabricacion etapa = EtapaFabricacion.get(materialCmd.idEtapa)
+			Producto producto = Producto.get(materialCmd.idProducto);
 
-    	this.producto = producto;
-    	this.cantidad = materialCmd.cantidad;
-        this.etapaFabricacion = etapa;
+			this.producto = producto;
+			this.cantidad = materialCmd.cantidad;
 
-        log.info this.toString()
     }
 
 
     @Override
     public String toString(){
 
-    	return "${producto} - ${cantidad} - ${etapaFabricacion}";
+    	return "${producto} - ${cantidad}";
     }
 }

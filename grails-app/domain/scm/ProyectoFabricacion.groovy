@@ -12,7 +12,7 @@ class ProyectoFabricacion {
 	List<PedidoCotizacion> pedidosCotizacion = new ArrayList();
 
 
-	static hasMany = [ordenes: OrdenFabricacion, pedidosCotizacion:PedidoCotizacion]
+	static hasMany = [ordenes:OrdenFabricacion, pedidosCotizacion:PedidoCotizacion]
 
     static constraints = {
     	ordenes nullable:true

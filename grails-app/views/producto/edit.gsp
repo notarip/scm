@@ -25,6 +25,10 @@
                             <td valign="top" class="name">Descripción:</td>
                             <td valign="top" class="value"><g:field type="text" name="descripcion" value="${producto?.descripcion}"/></td>
                         </tr>
+                         <tr class="prop">
+                            <td valign="top" class="name">Categoria:</td>
+                            <td valign="top" class="value"><g:field type="text" readonly="readonly"  name="categoria" value="${producto?.categoria}"/></td>
+                        </tr>
                         <tr class="prop">
                             <td valign="top" class="name">Materiales:</td>
                             <td>

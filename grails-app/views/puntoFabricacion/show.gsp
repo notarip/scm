@@ -24,14 +24,14 @@
                             <td valign="top" class="value">${fieldValue(bean:puntoFabricacion, field:'observaciones')}</td>
                         </tr>
                         <tr class="prop">
-                        <td valign="top" class="name">Etapas:</td>
-                        <g:if test="${puntoFabricacion.etapas == null || puntoFabricacion.etapas.size() == 0}">
-                            <td valign="top" class="value">Sin Etapas</td>
+                        <td valign="top" class="name">Categorias:</td>
+                        <g:if test="${puntoFabricacion.categorias == null || puntoFabricacion.categorias.size() == 0}">
+                            <td valign="top" class="value">Sin Categorias</td>
                         </g:if>
                         <g:else>
                             <td  valign="top" style="text-align:left;" class="value">
                                 <ul>
-                                <g:each var="p" in="${puntoFabricacion.etapas}">
+                                <g:each var="p" in="${puntoFabricacion.categorias}">
                                     <li>${p?.encodeAsHTML()}</li>
                                 </g:each>
                                 </ul>

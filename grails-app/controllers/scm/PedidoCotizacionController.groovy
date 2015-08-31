@@ -3,14 +3,34 @@ package scm
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+class PedidoCotizacionCmd{
+
+    Long id
+    String costoUnitarioPrevisto
+    String costoUnitarioEstimado
+
+}
+
+
 @Transactional(readOnly = true)
 class PedidoCotizacionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+
+        
+        def pedidoCotizacionList = PedidoCotizacion.withCriteria {
+            if(params.query){
+                  proyecto {
+                    like('nombre', "%${params.query}%")
+                }
+            }
+        }
+
         params.max = Math.min(max ?: 10, 100)
-        respond PedidoCotizacion.list(params), model:[pedidoCotizacionCount: PedidoCotizacion.count()]
+
+        model:[pedidoCotizacionList: pedidoCotizacionList, pedidoCotizacionCount: pedidoCotizacionList.size()]
     }
 
     def show(PedidoCotizacion pedidoCotizacion) {
@@ -23,6 +43,7 @@ class PedidoCotizacionController {
 
     @Transactional
     def save(PedidoCotizacion pedidoCotizacion) {
+        
         if (pedidoCotizacion == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -51,7 +72,12 @@ class PedidoCotizacionController {
     }
 
     @Transactional
-    def update(PedidoCotizacion pedidoCotizacion) {
+    def update(PedidoCotizacionCmd pedidoCmd) {
+        
+        PedidoCotizacion pedidoCotizacion = PedidoCotizacion.get(pedidoCmd.id)
+        
+        pedidoCotizacion.setCostoUnitarioEstimado(Float.valueOf(pedidoCmd.costoUnitarioEstimado))
+
         if (pedidoCotizacion == null) {
             transactionStatus.setRollbackOnly()
             notFound()

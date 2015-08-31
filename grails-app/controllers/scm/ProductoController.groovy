@@ -11,6 +11,7 @@ class ProductoCmd {
     Integer id
     String nombre
     String descripcion
+    Integer idCategoria
     List<MaterialCmd> materiales
 }
 
@@ -19,7 +20,6 @@ class MaterialCmd {
    Integer id
    Integer idProducto
    Integer cantidad
-   Integer idEtapa
    boolean _deleted
 }
 
@@ -56,7 +56,11 @@ class ProductoController {
     }
 
     def create() {
-        respond new Producto(params)
+
+        def categorias = Categoria.getAll()
+
+                
+        respond new Producto(params), model:[categorias:categorias]
     }
 
     @Transactional
@@ -64,7 +68,7 @@ class ProductoController {
 
         def producto = new Producto(nombre: productoCmd.nombre, descripcion: productoCmd.descripcion)
 
-        productoService.actualizarMateriales(producto, productoCmd)
+        productoService.actualizarProducto(producto, productoCmd)
 
 
         if (producto == null) {

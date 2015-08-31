@@ -42,6 +42,7 @@
                 <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>Tipo</th>
+                <th>Categoria</th>
                 <th>#Materiales</th>
                 <th>Acciones</th>
               </tr>
@@ -53,6 +54,7 @@
                 <td><g:link action="show" id="${it.id}">${it.nombre}</g:link></td>
                 <td>${it.descripcion}</td>
                 <td>${it.getTipo()}</td>    
+                <td>${it.categoria}</td>    
                 <td>${it.materiales.size()}</td>
                 <td colspan="2">
                     <g:form resource="${producto}">

@@ -19,14 +19,14 @@
     <link href="${resource(dir: 'javascripts', file: 'jquery-ui.min.css')}" rel="stylesheet">
 
     <script src="${resource(dir: 'javascripts', file: 'ie-emulation-modes-warning.js')}"></script>
-    
+
     <script src="${resource(dir: 'javascripts', file: 'jquery.js')}"></script>
     <script src="${resource(dir: 'javascripts', file: 'jquery-ui.js')}"></script>
 
     <script src="${resource(dir: 'javascripts', file: 'bootstrap.min.js')}"></script>
     <script src="${resource(dir: 'javascripts', file: 'docs.min.js')}"></script>
     <script src="${resource(dir: 'javascripts', file: 'bootstrap-select.js')}"></script>
-    
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="${resource(dir: 'js/boostrap', file: 'ie10-viewport-bug-workaround.js')}"></script>
 
@@ -55,11 +55,14 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="/categoria">Categorias</a></li>
                 <li><a href="/producto">Productos</a></li>
                 <li><a href="/proyectoFabricacion">Proyectos</a></li>
                 <li><a href="/puntoFabricacion">Puntos de Fabricacion</a></li>
                 <li><a href="/cuentaCorrienteProducto">CC - Productos</a></li>
+                <li class="divider"></li>
                 <li><a href="/pedidoProducto">Pedidos Produtos</a></li>
+                <li><a href="/pedidoCotizacion">Pedidos Cotizacion</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <!--li><a href="#">Separated link</a></li-->
@@ -78,7 +81,7 @@
   </head>
 
 <body>
-    
+
     <g:layoutBody/>
 
 </body>

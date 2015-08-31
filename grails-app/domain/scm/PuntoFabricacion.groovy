@@ -5,21 +5,30 @@ class PuntoFabricacion {
 	String nombre
 	String observaciones
 	Boolean interno
-	List<EtapaFabricacion> etapas = new ArrayList();
-	static hasMany = [etapas:EtapaFabricacion]
+	Integer distancia
 
-    static constraints = {
-    	observaciones nullable:true
-    }
+	static hasMany = [categorias:Categoria]
+
+	static belongsTo = Categoria
+
+  static constraints = {
+  	observaciones nullable:true
+		distancia nullable:true
+  }
 
 
-    def getTipo(){
+  def getTipo(){
 
         if(interno){
             return "Interno"
         }else{
             return "Externo"
         }
-       
-    }
+  }
+
+  @Override
+  public String toString(){
+    return "${nombre}";
+  }
+
 }

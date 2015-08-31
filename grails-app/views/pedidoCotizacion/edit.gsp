@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'pedidoCotizacion.label', default: 'PedidoCotizacion')}" />
-        <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <meta name="layout" content="header"/>
+        <title>scm</title>
+        <g:set var="entityName" value="${message(code: 'pedidoCotizacion.label', default: 'pedidoCotizacion')}" />
+        <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#edit-pedidoCotizacion" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
+    <div class="container" role="navigation">
+        <div class="crud-table panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">${message(code: 'pedidoCotizacion.label', default: 'pedidoCotizacion')}</h4>
+            </div>
+                 <g:form resource="${pedidoCotizacion}" method="PUT">
+                 <table>
+                    <g:hiddenField name="version" value="${pedidoCotizacion?.version}" />
+                    <fieldset class="form">
+                        <g:hiddenField type="text" name="id" value="${pedidoCotizacion?.id}"/>
+                        <tr class="prop">
+                            <td valign="top" class="name">Punto:</td>
+                            <g:hiddenField name='punto' value='${pedidoCotizacion?.punto.id}'/>
+                            <td valign="top" class="value"><g:textField type="text" readonly="readonly" name="nombrePunto" value="${pedidoCotizacion?.punto}"/></td>
+                            <td valign="top" class="name">Proyecto:</td>
+                            <g:hiddenField name='proyecto' value='${pedidoCotizacion?.proyecto.id}'/>
+                            <td valign="top" class="value"><g:field type="text" readonly="readonly" name="proyectoNombre" value="${pedidoCotizacion?.proyecto}"/></td>
+                            <td valign="top" class="name">Producto:</td>
+                            <g:hiddenField name='producto' value='${pedidoCotizacion?.producto.id}'/>
+                            <td valign="top" class="value"><g:field type="text" readonly="readonly" name="productoNombre" value="${pedidoCotizacion?.producto}"/></td>
+                        </tr>
+                        <tr class="prop">
+                            <td valign="top" class="name">C.U. Previsto:</td>
+                            <td valign="top" class="value"><g:field type="number" step="0.01" readonly="readonly" name="costoUnitarioPrevisto" value="${pedidoCotizacion?.costoUnitarioPrevisto}"/></td>
+                        </tr>
+                         <tr class="prop">
+                            <td valign="top" class="name">C.U Estimado</td>
+                            <td valign="top" class="value"><g:field type="number"  step="0.01" min="0" name="costoUnitarioEstimado" value="${pedidoCotizacion?.costoUnitarioEstimado}"/></td>
+                        </tr>
+                        <g:link class="btn-guardar btn btn-info" action="index">${message(code: 'default.button.cancel.label', default: 'Cancelar')}</g:link>
+                        <input class="btn-guardar btn btn-success" type="submit" value="${message(code: 'default.button.update.label', default: 'Guardar')}" />
+                    </fieldset>
+                    </table>
+                </g:form>
         </div>
-        <div id="edit-pedidoCotizacion" class="content scaffold-edit" role="main">
-            <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <g:hasErrors bean="${pedidoCotizacion}">
-            <ul class="errors" role="alert">
-                <g:eachError bean="${pedidoCotizacion}" var="error">
-                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                </g:eachError>
-            </ul>
-            </g:hasErrors>
-            <g:form resource="${pedidoCotizacion}" method="PUT">
-                <g:hiddenField name="version" value="${pedidoCotizacion?.version}" />
-                <fieldset class="form">
-                    <f:all bean="pedidoCotizacion"/>
-                </fieldset>
-                <fieldset class="buttons">
-                    <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-                </fieldset>
-            </g:form>
+    </div>
+        <g:if test="${flash.message}">
+        <div class="message" role="status">${flash.message}</div>
+        </g:if>
         </div>
     </body>
 </html>

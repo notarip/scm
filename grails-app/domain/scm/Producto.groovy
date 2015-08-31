@@ -4,6 +4,7 @@ class Producto {
 
 	String nombre
 	String descripcion
+	Categoria categoria
 	List<Material> materiales = new ArrayList();
 
 	static hasMany = [materiales:Material]
@@ -11,20 +12,20 @@ class Producto {
 
 	static constraints = {
 		materiales nullable:true
-    }
+		categoria nullable:true
+  }
 
-    static mapping = {
+  static mapping = {
 		materiales cascade:"all,delete-orphan"
 	}
 
+  def borrarMaterial(def idMaterial){
 
-    def borrarMaterial(def idMaterial){
-
-		if (idMaterial){
-    		Material material = Material.get(idMaterial);
-    		this.removeFromMateriales(material);
-    	}
-    }
+	if (idMaterial){
+  		Material material = Material.get(idMaterial);
+  		this.removeFromMateriales(material);
+  	}
+  }
 
 
     def esFinal(){

@@ -84,6 +84,13 @@ class ProductoService {
 
         producto.setNombre(productoCmd.nombre)
         producto.setDescripcion(productoCmd.descripcion)
+
+        if(productoCmd.idCategoria){
+            Categoria categoria = Categoria.get(productoCmd.idCategoria)
+            producto.setCategoria(categoria)
+        }
+        
+
         actualizarMateriales(producto, productoCmd)
     }
 

@@ -16,16 +16,16 @@
         <table>
         <tr>
         <td>
-        <!-- div>
+        <div>
             <g:link class="btn-alta btn btn-success" action="create">+ Pedido Cotizacion</g:link>
-        </div --> 
+        </div> 
         </td>           
         <td>
             <fieldset class="form">
                 <g:form action="index" method="GET">
                 <div class="fieldcontain">
-                <label for="query">Buscar:</label>
-                <g:textField placeholder="Ej. proyecto 1" name="query" value="${params.query}"/>
+                <label for="query">Filtrar:</label>
+                <g:select name="query" class='form-control select-material' from="${puntos}" value="${params.query}" optionKey="nombre" noSelection="${['null':'Puntos...']}" onchange="submit()"/>
                 </div>
                 </g:form>
             </fieldset>

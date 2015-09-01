@@ -21,16 +21,18 @@ class PedidoCotizacionController {
 
         
         def pedidoCotizacionList = PedidoCotizacion.withCriteria {
-            if(params.query){
-                  proyecto {
+            if(params.query && params.query != "null"){
+                  punto {
                     like('nombre', "%${params.query}%")
                 }
             }
         }
 
+        def puntosList = PuntoFabricacion.getAll() 
+
         params.max = Math.min(max ?: 10, 100)
 
-        model:[pedidoCotizacionList: pedidoCotizacionList, pedidoCotizacionCount: pedidoCotizacionList.size()]
+        model:[puntos:puntosList, pedidoCotizacionList: pedidoCotizacionList, pedidoCotizacionCount: pedidoCotizacionList.size()]
     }
 
     def show(PedidoCotizacion pedidoCotizacion) {
@@ -95,9 +97,8 @@ class PedidoCotizacionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'pedidoCotizacion.label', default: 'PedidoCotizacion'), pedidoCotizacion.id])
-                redirect pedidoCotizacion
+                action:"index"
             }
-            '*'{ respond pedidoCotizacion, [status: OK] }
         }
     }
 

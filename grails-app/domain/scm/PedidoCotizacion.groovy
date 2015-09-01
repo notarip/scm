@@ -40,7 +40,7 @@ class PedidoCotizacion {
 
       if(costoUnitarioEstimado != 0 && costoUnitarioPrevisto != 0){
 
-        varianza = costoUnitarioEstimado/costoUnitarioPrevisto*100
+        varianza = costoUnitarioEstimado/costoUnitarioPrevisto*100 - 100
 
       }
 

@@ -10,6 +10,7 @@
                 <th>C.U. Estimado</th>
                 <th>C.U. Varianza</th>
                 <th>Cantidad</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -21,17 +22,33 @@
                 <td>${it.producto}</td>    
                 <td>${it.costoUnitarioPrevisto}</td>
                 <td>${it.costoUnitarioEstimado}</td>
-                <g:if test="${it.getVarianza() < 100 && it.getVarianza() > 0}">
+                <g:if test="${it.getVarianza() < 0}">
                     <td style="background-color:#2ecc71">${it.getVarianza().round(2)}</td>
                 </g:if>
-                <g:elseif test="${it.getVarianza() > 100}">
+                <g:elseif test="${it.getVarianza() > 0}">
                     <td style="background-color:#e74c3c">${it.getVarianza().round(2)}</td>
                 </g:elseif>
+                <g:elseif test="${it.getVarianza() == 0 && it.costoUnitarioEstimado != 0 }">
+                    <td style="background-color:#f39c12">${it.getVarianza().round(2)}</td>
+                </g:elseif>
                 <g:else>
-                <td >${it.getVarianza().round(2)}</td>
+                    <td >${it.getVarianza().round(2)}</td>
                 </g:else>
                 <td>${it.cantidad}</td>
+                <td colspan="2">
+                    <g:form resource="${pedidoCotizacion}">
+                        <fieldset class="buttons">
+                            <g:hiddenField name="id" value="${it?.id}" />
+                            <g:actionSubmit class="btn-actualizar btn btn-warning" action="edit" value="${message(code: 'default.button.edit.label', default: 'Editar')}" />
+                            
+
+                        </fieldset>
+                    </g:form>
+                </td>            
+
+
             </tr>
+
             </g:each>
             </tbody>
             </table>

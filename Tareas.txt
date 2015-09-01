@@ -14,9 +14,8 @@ Tareas
 
 @Comportamiento
 
-- 
-- un combo que filtre los pedidos de cotizacion por punto
-- que se armen los pedidos de cotizacion
+
+- que cuando salgo de editar un pedido de cotizacion vuelva a la lista
 - pasar la obtencion de productos (analisis del arbol de productos) a la clase de proyectos
 - asignar los recursos segun el orden de fabricacion que tenga el producto
 - en la vista del proyecto agregar los productos bloqueados y los pedidos generados

@@ -19,7 +19,7 @@ class PedidoCotizacionController {
 
     def index(Integer max) {
 
-        
+
         def pedidoCotizacionList = PedidoCotizacion.withCriteria {
             if(params.query && params.query != "null"){
                   punto {
@@ -28,7 +28,7 @@ class PedidoCotizacionController {
             }
         }
 
-        def puntosList = PuntoFabricacion.getAll() 
+        def puntosList = PuntoFabricacion.getAll()
 
         params.max = Math.min(max ?: 10, 100)
 
@@ -45,7 +45,7 @@ class PedidoCotizacionController {
 
     @Transactional
     def save(PedidoCotizacion pedidoCotizacion) {
-        
+
         if (pedidoCotizacion == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -75,9 +75,9 @@ class PedidoCotizacionController {
 
     @Transactional
     def update(PedidoCotizacionCmd pedidoCmd) {
-        
+
         PedidoCotizacion pedidoCotizacion = PedidoCotizacion.get(pedidoCmd.id)
-        
+
         pedidoCotizacion.setCostoUnitarioEstimado(Float.valueOf(pedidoCmd.costoUnitarioEstimado))
 
         if (pedidoCotizacion == null) {
@@ -97,7 +97,7 @@ class PedidoCotizacionController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'pedidoCotizacion.label', default: 'PedidoCotizacion'), pedidoCotizacion.id])
-                action:"index"
+                redirect action:"index", method:"GET"
             }
         }
     }

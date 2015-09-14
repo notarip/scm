@@ -12,9 +12,11 @@
         <div class="panel-heading">
             <h4 class="panel-title">Movimiento Cuenta Corriente</h4>
         </div>
+            <!-- 
             <fieldset class="buttons">
                 <g:link class="btn-guardar btn btn-info" action="index">${message(code: 'default.button.back.label', default: 'Volver')}</g:link>            
             </fieldset>        
+            -->
             <div class="dialog">
 
             <div class="cabecera-grilla jumbotron">

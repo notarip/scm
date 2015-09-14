@@ -10,6 +10,13 @@ class PedidoProductoService {
     }
 
 
+    def obtenerPedidos(ProyectoFabricacion proyecto){
+
+
+      return PedidoProducto.findAll("from PedidoProducto as pp where pp.proyecto = ?",
+                       [proyecto])
+    }
+
     def crearPedido(def pedido){
 
       Producto producto = Producto.get(pedido.producto)

@@ -17,6 +17,9 @@ class ProyectoCmd{
 class ProyectoFabricacionController {
 
     ProyectoFabricacionService proyectoFabricacionService
+    PedidoProductoService pedidoProductoService
+    PedidoCotizacionService pedidoCotizacionService
+
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -34,8 +37,14 @@ class ProyectoFabricacionController {
         model:[proyectoFabricacionList:proyectoFabricacionList,proyectoFabricacionCount: ProyectoFabricacion.count()]
     }
 
-    def show(ProyectoFabricacion proyectoFabricacion) {
-        respond proyectoFabricacion
+    def show(ProyectoFabricacion proyecto) {
+
+        def pedidoProductoList = pedidoProductoService.obtenerPedidos(proyecto)
+        def pedidoCotizacionList = pedidoCotizacionService.obtenerPedidos(proyecto)
+
+        println pedidoProductoList
+
+        model:[proyecto:proyecto, pedidoProductoList:pedidoProductoList, pedidoCotizacionList:pedidoCotizacionList]
     }
 
     def create() {

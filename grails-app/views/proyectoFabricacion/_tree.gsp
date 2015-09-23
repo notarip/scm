@@ -27,8 +27,7 @@
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
-        dos
-        <!-- g:render template="../pedidoCotizacion/grid" model="['pedidoCotizacionList':pedidoCotizacionList]"/ -->
+        <g:render template="../pedidoCotizacion/grid" model="['pedidoCotizacionList':pedidoCotizacionList]"/>
       </div>
     </div>
   </div>
@@ -44,8 +43,7 @@
   </div>
   <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
     <div class="panel-body">
-      tres
-          <!-- g:render template="../pedidoCotizacion/grid" model="['pedidoCotizacionList':pedidoCotizacionList]"/ -->
+          <g:render template="../pedidoCotizacion/grid" model="['pedidoCotizacionList':pedidoCotizacionList]"/>
     </div>
   </div>
 </div>

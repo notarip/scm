@@ -15,6 +15,15 @@ Tareas
 @Comportamiento
 
 
+- ver como se le dice a la diff en porcentaje (varianza ??)
+
+- crear un pedido de producto por cada faltante y cuando se muestran los agrupas por producto/proyecto
+ -- cuando se crean los pedidos de producto ver como identificarlos con el producto para el que se van a utilizar
+ -- cuando se crea la orden de fabricacion pegarle a la cta cte la orden de fabricacion 
+
+- agregar a los pedidos de cotizacion la opcion de aporbarlos una vez que esten completos
+-- cuando se aprueba el pedido de cotizacion generar una orden de fabricacion
+
 - asignar los recursos segun el orden de fabricacion que tenga el producto
 - en la vista del proyecto agregar los productos bloqueados y los pedidos generados
 - en el dashboard mostar: productos, proyectos, puntos de fabricacion

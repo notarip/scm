@@ -19,7 +19,7 @@
                 <td><g:link action="show" id="${it.id}">${it.id}</g:link></td>
                 <td><g:link controller="ProyectoFabricacion" action="show" id="${it.id}">${it.proyecto}</g:link></td>
                 <td>${it.punto}</td>
-                <td>${it.producto}</td>    
+                <td>${it.producto}</td>
                 <td>${it.costoUnitarioPrevisto}</td>
                 <td>${it.costoUnitarioEstimado}</td>
                 <g:if test="${it.getVarianza() < 0}">
@@ -40,11 +40,11 @@
                         <fieldset class="buttons">
                             <g:hiddenField name="id" value="${it?.id}" />
                             <g:actionSubmit class="btn-actualizar btn btn-warning" action="edit" value="${message(code: 'default.button.edit.label', default: 'Editar')}" />
-                            
+
 
                         </fieldset>
                     </g:form>
-                </td>            
+                </td>
 
 
             </tr>
@@ -61,4 +61,4 @@
             <div class="pagination" >
                 <g:paginate total="${pedidoCotizacionCount ?: 0}" />
             </div>
-<div>
+</div>

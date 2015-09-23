@@ -91,10 +91,11 @@ class ProyectoFabricacionService {
         analizarArbolProductos(proyecto, disponibilidad, productoFinal, cantidad, true)
 
 
-        HashMap<Producto,Long> faltantes = unificarProductos(proyecto, disponibilidad.faltantes.primarios)
+        //HashMap<Producto,Long> faltantes = unificarProductos(proyecto, disponibilidad.faltantes.primarios)
 
-        crearPedidosProductos(proyecto, faltantes)
+        //crearPedidosProductos(proyecto, faltantes)
 
+        crearPedidosProductos2(proyecto, disponibilidad.faltantes.primarios)
 
         ArrayList<ProductoDTO> fabricables = new ArrayList<ProductoDTO>()
         fabricables.addAll(disponibilidad.disponibles.finales)
@@ -108,7 +109,10 @@ class ProyectoFabricacionService {
 
         crearPedidosDeCotizacion(proyecto, productos)
 
+
+
     }
+
 
     def HashMap<Producto, Long> unificarProductos(ProyectoFabricacion proyecto, List<ProductoDTO> productos){
 
@@ -202,17 +206,24 @@ class ProyectoFabricacionService {
 
     }
 
-    def crearPedidosProductos(ProyectoFabricacion proyecto, HashMap<Producto, Long> productos){
+    def crearPedidoProducto(ProyectoFabricacion proyecto, Producto producto, Long cantidad){
 
-        PedidoProducto pedido = null
+      if (cantidad > 0){
 
-        for(Producto producto: productos.keySet()) {
+        PedidoProducto pedido = pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)
 
-            Long cantidad = productos.get(producto)
+        pedido.save flush:true
 
-            pedido = pedidoProductoService.crearPedidoProducto(proyecto, producto, cantidad)
+      }
+      
+    }
 
-            pedido.save flush:true
+
+    def crearPedidosProductos2(ProyectoFabricacion proyecto, List<ProductoDTO> productos){
+
+        productos.each{ prod ->
+
+          crearPedidoProducto(proyecto, prod.producto, prod.cantidad)
 
         }
 

@@ -42,9 +42,7 @@ class ProyectoFabricacionController {
         def pedidoProductoList = pedidoProductoService.obtenerPedidos(proyecto)
         def pedidoCotizacionList = pedidoCotizacionService.obtenerPedidos(proyecto)
 
-        println pedidoProductoList
-
-        model:[proyecto:proyecto, pedidoProductoList:pedidoProductoList, pedidoCotizacionList:pedidoCotizacionList]
+        model:[proyecto:proyecto, pedidoProductoList:pedidoProductoList, pedidoCotizacionList:pedidoCotizacionList, vistaProyecto:true]
     }
 
     def create() {
@@ -109,6 +107,13 @@ class ProyectoFabricacionController {
             }
             '*'{ respond proyectoFabricacion, [status: OK] }
         }
+    }
+
+    @Transactional
+    def aprobar(PedidoCotizacion cotizacion){
+
+      println " aprobando cotizacion: ${cotizacion} ...."
+
     }
 
     @Transactional

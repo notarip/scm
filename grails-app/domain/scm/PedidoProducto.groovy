@@ -9,14 +9,14 @@ class PedidoProducto {
 	CuentaCorrienteProducto movimiento
 	ProyectoFabricacion proyecto
 
-    static constraints = {
+  static constraints = {
 
-    	fecha nullable:true
-			fechaCierre nullable:true
-			proyecto nullable:true
-			movimiento nullable:true
+  	fecha nullable:true
+		fechaCierre nullable:true
+		proyecto nullable:true
+		movimiento nullable:true
 
-    }
+  }
 
   def beforeInsert() {
 		if (!fecha) {

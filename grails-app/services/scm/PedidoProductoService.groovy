@@ -28,7 +28,7 @@ class PedidoProductoService {
 
     def crearPedidoProducto(ProyectoFabricacion proyecto, Producto producto, Long cantidad){
 
-      
+
     	PedidoProducto pedido = new PedidoProducto(producto:producto,cantidad:cantidad).save()
 
       if(proyecto){

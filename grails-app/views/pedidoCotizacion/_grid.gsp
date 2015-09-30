@@ -36,17 +36,12 @@
                 </g:else>
                 <td>${it.cantidad}</td>
                 <td colspan="2">
-                    <g:form resource="${pedidoCotizacion}">
-                        <fieldset class="buttons">
-                            <g:hiddenField name="id" value="${it?.id}" />
-                            <g:actionSubmit class="btn-actualizar btn btn-warning" action="edit" value="${message(code: 'default.button.edit.label', default: 'Editar')}" />
-
-
-                        </fieldset>
-                    </g:form>
-                </td>
-
-
+                  <g:if test="${it.costoUnitarioEstimado > 0 && vistaProyecto}">
+                    <g:link class="btn-actualizar btn btn-success" controller="ProyectoFabricacion" action="aprobar" id="${it?.id}">Aprobar</g:link></td>
+                  </g:if>
+                  <g:elseif test="${!vistaProyecto}">
+                    <g:link class="btn-actualizar btn btn-warning" controller="PedidoCotizacion" action="edit" id="${it?.id}">Editar</g:link></td>
+                  </g:elseif>
             </tr>
 
             </g:each>
